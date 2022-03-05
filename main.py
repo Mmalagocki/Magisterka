@@ -13,6 +13,11 @@ from sklearn.datasets import fetch_20newsgroups
 from gensim.test.utils import datapath
 import os.path
 
+# nltk.download('wordnet')
+# nltk.download('omw-1.4')
+#
+# exit()
+
 '''
 Write a function to perform the pre processing steps on the entire dataset
 '''
