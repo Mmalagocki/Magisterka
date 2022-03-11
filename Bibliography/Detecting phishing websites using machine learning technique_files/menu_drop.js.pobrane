@@ -1,0 +1,1 @@
+!function(i){i.fn.menu_drop=function(s,h){h=i.extend({},d,h);var d={child:".dropdown"};return"show"===s?(this.addClass("hover"),i(h.child,this).css("visibility","visible"),this):"hide"===s?(this.removeClass("hover"),i(h.child,this).css("visibility","hidden"),this):void 0}}(jQuery);

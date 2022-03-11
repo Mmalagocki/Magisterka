@@ -1,0 +1,1 @@
+!function(t){var r,e,i,n;(e=(r=t("#twitter-share-link").attr("href").split("&"))[1].substring(5)).length>115&&(i=("&text="+e.substring(0,115)+" ...").replace(/;/g,"%3B"),n=r[0]+i,t("#twitter-share-link").attr("href",n))}(jQuery);

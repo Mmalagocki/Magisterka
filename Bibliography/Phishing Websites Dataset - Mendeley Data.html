@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://data.mendeley.com/datasets/72ptz43s9v/1 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"> <script type="text/javascript" src="./Phishing Websites Dataset - Mendeley Data_files/5bbe2835c3"></script><script src="./Phishing Websites Dataset - Mendeley Data_files/nr-spa-1215.min.js.pobrane"></script><script async="" src="./Phishing Websites Dataset - Mendeley Data_files/analytics.js.pobrane"></script><script async="" src="./Phishing Websites Dataset - Mendeley Data_files/pendo-staging.js.pobrane"></script><script async="" src="./Phishing Websites Dataset - Mendeley Data_files/pendo.js.pobrane"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"agent":"","beacon":"bam-cell.nr-data.net","errorBeacon":"bam-cell.nr-data.net","licenseKey":"5bbe2835c3","applicationID":"1040430444","applicationTime":2011.516399,"transactionName":"MlVVMkMFVkFSURYKCQsfch5BFl1BQFgRTCEgZBhJVQVMU0BXFhBJX1lTTmoFFUhyHzhTS1xtTFcBGREdCUQHERUMX1lOalQVC24ZSw==","queueTime":0,"ttGuid":"e0edac0c8ba99ce5","agentToken":null}; (window.NREUM||(NREUM={})).init={privacy:{cookies_enabled:true},ajax:{deny_list:["bam-cell.nr-data.net"]},distributed_tracing:{enabled:true}};(window.NREUM||(NREUM={})).loader_config={agentID:"1040431200",accountID:"2100285",trustKey:"2038175",xpid:"VgcHUVRbDRABVFVSAwIHUlAF",licenseKey:"5bbe2835c3",applicationID:"1040430444"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(32),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(33),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError";if(!c.disabled){var l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(14),t(13),"addEventListener"in window&&t(7),c.xhrWrappable&&t(15),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})}},{}],3:[function(t,e,n){var r=t("loader");r.disabled||(r.features.ins=!0)},{}],4:[function(t,e,n){function r(){U++,L=g.hash,this[u]=y.now()}function o(){U--,g.hash!==L&&i(0,!0);var t=y.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+g,e])}function a(t,e){t.on(e,function(){this[e]=y.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,g=w.location,y=t("loader");if(w[v]&&y.xhrWrappable&&!y.disabled){var x=t(11),b=t(12),E=t(9),R=t(7),O=t(14),T=t(8),S=t(15),P=t(10),M=t("ee"),C=M.get("tracer"),N=t(23);t(17),y.features.spa=!0;var L,U=0;M.on(u,r),b.on(p,r),P.on(p,r),M.on(d,o),b.on(l,o),P.on(l,o),M.buffer([u,d,"xhr-resolved"]),R.buffer([u]),O.buffer(["setTimeout"+c,"clearTimeout"+s,u]),S.buffer([u,"new-xhr","send-xhr"+s]),T.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),x.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),C.buffer([u,"no-"+u]),P.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,m+s),a(T,m+"-done"),a(P,"new-jsonp"),a(P,"jsonp-end"),a(P,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,N(!0)),w[v]("load",i,N(!0)),w[v]("popstate",function(){i(0,U>1)},N(!0))}},{}],5:[function(t,e,n){function r(){var t=new PerformanceObserver(function(t,e){var n=t.getEntries();s(v,[n])});try{t.observe({entryTypes:["resource"]})}catch(e){}}function o(t){if(s(v,[window.performance.getEntriesByType(w)]),window.performance["c"+p])try{window.performance[h](m,o,!1)}catch(t){}else try{window.performance[h]("webkit"+m,o,!1)}catch(t){}}function i(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var a=t("ee"),s=t("handle"),c=t(14),f=t(13),u=t(6),d=t(23),p="learResourceTimings",l="addEventListener",h="removeEventListener",m="resourcetimingbufferfull",v="bstResource",w="resource",g="-start",y="-end",x="fn"+g,b="fn"+y,E="bstTimer",R="pushState",O=t("loader");if(!O.disabled){O.features.stn=!0,t(9),"addEventListener"in window&&t(7);var T=NREUM.o.EV;a.on(x,function(t,e){var n=t[0];n instanceof T&&(this.bstStart=O.now())}),a.on(b,function(t,e){var n=t[0];n instanceof T&&s("bst",[n,e,this.bstStart,O.now()])}),c.on(x,function(t,e,n){this.bstStart=O.now(),this.bstType=n}),c.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),this.bstType])}),f.on(x,function(){this.bstStart=O.now()}),f.on(b,function(t,e){s(E,[e,this.bstStart,O.now(),"requestAnimationFrame"])}),a.on(R+g,function(t){this.time=O.now(),this.startPath=location.pathname+location.hash}),a.on(R+y,function(t){s("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),u()?(s(v,[window.performance.getEntriesByType("resource")]),r()):l in window.performance&&(window.performance["c"+p]?window.performance[l](m,o,d(!1)):window.performance[l]("webkit"+m,o,d(!1))),document[l]("scroll",i,d(!1)),document[l]("keypress",i,d(!1)),document[l]("click",i,d(!1))}}},{}],6:[function(t,e,n){e.exports=function(){return"PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver}},{}],7:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1];if(null!==n&&("function"==typeof n||"object"==typeof n)){var r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],8:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(33),a=t(32);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,p=s.Response,l=s.fetch,h="prototype",m="nr@context";d&&p&&l&&(a(u,function(t,e){r(d[h],e,f),r(p[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],9:[function(t,e,n){var r=t("ee").get("history"),o=t("wrap-function")(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],10:[function(t,e,n){function r(t){function e(){f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}function n(){f.emit("jsonp-error",[],l),f.emit("jsonp-end",[],l),t.removeEventListener("load",e,c(!1)),t.removeEventListener("error",n,c(!1))}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var d=s(a),p="function"==typeof d.parent[d.key];if(p){var l={};u.inPlace(d.parent,[d.key],"cb-",l),t.addEventListener("load",e,c(!1)),t.addEventListener("error",n,c(!1)),f.emit("new-jsonp",[t.src],l)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(d);return e?e[1]:null}function a(t,e){var n=t.match(l),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(p);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t(23),f=t("ee").get("jsonp"),u=t("wrap-function")(f);if(e.exports=f,o()){var d=/[?&](?:callback|cb)=([^&#]+)/,p=/(.*)\.([^.]+)/,l=/^(\w+)(\.|$)(.*)$/,h=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?u.inPlace(Node.prototype,h,"dom-"):(u.inPlace(HTMLElement.prototype,h,"dom-"),u.inPlace(HTMLHeadElement.prototype,h,"dom-"),u.inPlace(HTMLBodyElement.prototype,h,"dom-")),f.on("dom-start",function(t){r(t[0])})}},{}],11:[function(t,e,n){var r=t("ee").get("mutation"),o=t("wrap-function")(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],12:[function(t,e,n){function r(t){var e=i.context(),n=s(t,"executor-",e,null,!1),r=new f(n);return i.context(r).getCtx=function(){return e},r}var o=t("wrap-function"),i=t("ee").get("promise"),a=t("ee").getOrSetContext,s=o(i),c=t(32),f=NREUM.o.PR;e.exports=i,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){i.emit("propagate",[null,!o],a,!1,!1),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var a=e.apply(f,arguments),s=f.resolve(a);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&i.emit("propagate",[t,!0],n,!1,!1),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),o.wrapInPlace(f.prototype,"then",function(t){return function(){var e=this,n=o.argsToArray.apply(this,arguments),r=a(e);r.promise=e,n[0]=s(n[0],"cb-",r,null,!1),n[1]=s(n[1],"cb-",r,null,!1);var c=t.apply(this,n);return r.nextPromise=c,i.emit("propagate",[e,!0],c,!1,!1),c}}),i.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this,null,!1),t[1]=s(t[1],"resolve-",this,null,!1)}),i.on("executor-err",function(t,e,n){t[1](n)}),i.on("cb-end",function(t,e,n){i.emit("propagate",[n,!0],this.nextPromise,!1,!1)}),i.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=i.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],13:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],14:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],15:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){x.push(t),m&&(E?E.then(a):w?w(a):(R=-R,O.data=R))}function a(){for(var t=0;t<x.length;t++)r([],x[t]);x.length&&(x=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(7);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),p=t(23),l=NREUM.o,h=l.XHR,m=l.MO,v=l.PR,w=l.SI,g="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],x=[];e.exports=u;var b=window.XMLHttpRequest=function(t){var e=new h(t);try{u.emit("new-xhr",[e],e),e.addEventListener(g,o,p(!1))}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(h,b),b.prototype=h.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),m){var E=v&&v.resolve();if(!w&&!v){var R=1,O=document.createTextNode(R);new m(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===g||a()})},{}],16:[function(t,e,n){function r(t){if(!s(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,f=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var h=l.generateSpanId(),m=l.generateTraceId(),v=Date.now(),w={spanId:h,traceId:m,timestamp:v};return(t.sameOrigin||c(t)&&p())&&(w.traceContextParentHeader=o(h,m),w.traceContextStateHeader=i(h,v,n,r,f)),(t.sameOrigin&&!u()||!t.sameOrigin&&c(t)&&d())&&(w.newrelicHeader=a(h,m,v,n,r,f)),w}function o(t,e){return"00-"+e+"-"+t+"-01"}function i(t,e,n,r,o){var i=0,a="",s=1,c="",f="";return o+"@nr="+i+"-"+s+"-"+n+"-"+r+"-"+t+"-"+a+"-"+c+"-"+f+"-"+e}function a(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function s(t){return f()&&c(t)}function c(t){var e=!1,n={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(n=NREUM.init.distributed_tracing),t.sameOrigin)e=!0;else if(n.allowed_origins instanceof Array)for(var r=0;r<n.allowed_origins.length;r++){var o=h(n.allowed_origins[r]);if(t.hostname===o.hostname&&t.protocol===o.protocol&&t.port===o.port){e=!0;break}}return e}function f(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.enabled}function u(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.exclude_newrelic_header}function d(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&NREUM.init.distributed_tracing.cors_use_newrelic_header!==!1}function p(){return"init"in NREUM&&"distributed_tracing"in NREUM.init&&!!NREUM.init.distributed_tracing.cors_use_tracecontext_headers}var l=t(29),h=t(18);e.exports={generateTracePayload:r,shouldGenerateTrace:s}},{}],17:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(d[r],this.listener,!1);return e.protocol&&"data"===e.protocol?void g("Ajax/DataUrl/Excluded"):void(e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,s("xhr",[e,n,this.startTime,this.endTime,"xhr"],this)))}}function o(t,e){var n=c(e),r=t.params;r.hostname=n.hostname,r.port=n.port,r.protocol=n.protocol,r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=n,t.sameOrigin=n.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable&&!a.disabled){var s=t("handle"),c=t(18),f=t(16).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],p=d.length,l=t("id"),h=t(24),m=t(22),v=t(19),w=t(23),g=t(25).recordSupportability,y=NREUM.o.REQ,x=window.XMLHttpRequest;a.features.xhr=!0,t(15),t(8),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,e.params=this.params||{},e.metrics=this.metrics||{},t.addEventListener("load",function(n){i(e,t)},w(!1)),h&&(h>34||h<10)||t.addEventListener("progress",function(t){e.lastSize=t.loaded},w(!1))}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);if(n){var r=!1;n.newrelicHeader&&(e.setRequestHeader("newrelic",n.newrelicHeader),r=!0),n.traceContextParentHeader&&(e.setRequestHeader("traceparent",n.traceContextParentHeader),n.traceContextStateHeader&&e.setRequestHeader("tracestate",n.traceContextStateHeader),r=!0),r&&(this.dt=n)}}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<p;s++)e.addEventListener(d[s],this.listener,w(!1))}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("xhr-resolved",function(){this.endTime=a.now()}),u.on("addEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof x&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof x&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){function e(t,e){var n=!1;return e.newrelicHeader&&(t.set("newrelic",e.newrelicHeader),n=!0),e.traceContextParentHeader&&(t.set("traceparent",e.traceContextParentHeader),e.traceContextStateHeader&&t.set("tracestate",e.traceContextStateHeader),n=!0),n}var n,r=t[1]||{};"string"==typeof t[0]?n=t[0]:t[0]&&t[0].url?n=t[0].url:window.URL&&t[0]&&t[0]instanceof URL&&(n=t[0].href),n&&(this.parsedOrigin=c(n),this.sameOrigin=this.parsedOrigin.sameOrigin);var o=f(this.parsedOrigin);if(o&&(o.newrelicHeader||o.traceContextParentHeader))if("string"==typeof t[0]||window.URL&&t[0]&&t[0]instanceof URL){var i={};for(var a in r)i[a]=r[a];i.headers=new Headers(r.headers||{}),e(i.headers,o)&&(this.dt=o),t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&e(t[0].headers,o)&&(this.dt=o)}),u.on("fetch-start",function(t,e){this.params={},this.metrics={},this.startTime=a.now(),this.dt=e,t.length>=1&&(this.target=t[0]),t.length>=2&&(this.opts=t[1]);var n,r=this.opts||{},i=this.target;if("string"==typeof i?n=i:"object"==typeof i&&i instanceof y?n=i.url:window.URL&&"object"==typeof i&&i instanceof URL&&(n=i.href),o(this,n),"data"!==this.params.protocol){var s=(""+(i&&i instanceof y&&i.method||r.method||"GET")).toUpperCase();this.params.method=s,this.txSize=m(r.body)||0}}),u.on("fetch-done",function(t,e){if(this.endTime=a.now(),this.params||(this.params={}),"data"===this.params.protocol)return void g("Ajax/DataUrl/Excluded");this.params.status=e?e.status:0;var n;"string"==typeof this.rxSize&&this.rxSize.length>0&&(n=+this.rxSize);var r={txSize:this.txSize,rxSize:n,duration:a.now()-this.startTime};s("xhr",[this.params,r,this.startTime,this.endTime,"fetch"],this)})}},{}],18:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];if(0===(t||"").indexOf("data:"))return{protocol:"data"};var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],19:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(22);e.exports=r},{}],20:[function(t,e,n){function r(){}function o(t,e,n,r){return function(){return u.recordSupportability("API/"+e+"/called"),i(t+e,[f.now()].concat(s(arguments)),n?null:this,r),n?void 0:this}}var i=t("handle"),a=t(32),s=t(33),c=t("ee").get("tracer"),f=t("loader"),u=t(25),d=NREUM;"undefined"==typeof window.newrelic&&(newrelic=d);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",h=l+"ixn-";a(p,function(t,e){d[e]=o(l,e,!0,"api")}),d.addPageAction=o(l,"addPageAction",!0),d.setCurrentRouteName=o(l,"routeName",!0),e.exports=newrelic,d.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(h+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){m[e]=o(h,e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),u.recordSupportability("API/noticeError/called"),i("err",[t,f.now(),!1,e])}},{}],21:[function(t,e,n){function r(t){if(NREUM.init){for(var e=NREUM.init,n=t.split("."),r=0;r<n.length-1;r++)if(e=e[n[r]],"object"!=typeof e)return;return e=e[n[n.length-1]]}}e.exports={getConfiguration:r}},{}],22:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],23:[function(t,e,n){var r=!1;try{var o=Object.defineProperty({},"passive",{get:function(){r=!0}});window.addEventListener("testPassive",null,o),window.removeEventListener("testPassive",null,o)}catch(i){}e.exports=function(t){return r?{passive:!0,capture:!!t}:!!t}},{}],24:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],25:[function(t,e,n){function r(t,e){var n=[a,t,{name:t},e];return i("storeMetric",n,null,"api"),n}function o(t,e){var n=[s,t,{name:t},e];return i("storeEventMetrics",n,null,"api"),n}var i=t("handle"),a="sm",s="cm";e.exports={constants:{SUPPORTABILITY_METRIC:a,CUSTOM_METRIC:s},recordSupportability:r,recordCustom:o}},{}],26:[function(t,e,n){function r(){return s.exists&&performance.now?Math.round(performance.now()):(i=Math.max((new Date).getTime(),i))-a}function o(){return i}var i=(new Date).getTime(),a=i,s=t(34);e.exports=r,e.exports.offset=a,e.exports.getLastTimestamp=o},{}],27:[function(t,e,n){function r(t){return!(!t||!t.protocol||"file:"===t.protocol)}e.exports=r},{}],28:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?l("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&l("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();if(n.length>0){var r=n[n.length-1];if(f&&f<r.startTime)return;var o=[r],i=a({});i&&o.push(i),l("lcp",o)}}function i(t){t.getEntries().forEach(function(t){t.hadRecentInput||l("cls",[t])})}function a(t){var e=navigator.connection||navigator.mozConnection||navigator.webkitConnection;if(e)return e.type&&(t["net-type"]=e.type),e.effectiveType&&(t["net-etype"]=e.effectiveType),e.rtt&&(t["net-rtt"]=e.rtt),e.downlink&&(t["net-dlink"]=e.downlink),t}function s(t){if(t instanceof w&&!y){var e=Math.round(t.timeStamp),n={type:t.type};a(n),e<=h.now()?n.fid=h.now()-e:e>h.offset&&e<=Date.now()?(e-=h.offset,n.fid=h.now()-e):e=h.now(),y=!0,l("timing",["fi",e,n])}}function c(t){"hidden"===t&&(f=h.now(),l("pageHide",[f]))}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,d,p,l=t("handle"),h=t("loader"),m=t(31),v=t(23),w=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){u=new PerformanceObserver(r);try{u.observe({entryTypes:["paint"]})}catch(g){}d=new PerformanceObserver(o);try{d.observe({entryTypes:["largest-contentful-paint"]})}catch(g){}p=new PerformanceObserver(i);try{p.observe({type:"layout-shift",buffered:!0})}catch(g){}}if("addEventListener"in document){var y=!1,x=["click","keydown","mousedown","pointerdown","touchstart"];x.forEach(function(t){document.addEventListener(t,s,v(!1))})}m(c)}},{}],29:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){return a(16)}function i(){return a(32)}function a(t){function e(){return n?15&n[r++]:16*Math.random()|0}var n=null,r=0,o=window.crypto||window.msCrypto;o&&o.getRandomValues&&Uint8Array&&(n=o.getRandomValues(new Uint8Array(31)));for(var i=[],a=0;a<t;a++)i.push(e().toString(16));return i.join("")}e.exports={generateUuid:r,generateSpanId:o,generateTraceId:i}},{}],30:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],31:[function(t,e,n){function r(t){function e(){t(s&&document[s]?document[s]:document[i]?"hidden":"visible")}"addEventListener"in document&&a&&document.addEventListener(a,e,o(!1))}var o=t(23);e.exports=r;var i,a,s;"undefined"!=typeof document.hidden?(i="hidden",a="visibilitychange",s="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",a="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",a="webkitvisibilitychange",s="webkitVisibilityState")},{}],32:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],33:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],34:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?f(t,c,a):a()}function n(n,r,o,i,a){if(a!==!1&&(a=!0),!l.aborted||i){t&&a&&t(n,r,o);for(var s=e(o),c=m(n),f=c.length,u=0;u<f;u++)c[u].apply(s,r);var p=d[y[n]];return p&&p.push([x,n,r,s]),s}}function i(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return p[t]=p[t]||o(n)}function w(t,e){l.aborted||u(t,function(t,n){e=e||"feature",y[n]=e,e in d||(d[e]=[])})}var g={},y={},x={on:i,addEventListener:i,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:s,aborted:!1};return x}function i(t){return f(t,c,a)}function a(){return new r}function s(){(d.api||d.feature)&&(l.aborted=!0,d=l.backlog={})}var c="nr@context",f=t("gos"),u=t(32),d={},p={},l=e.exports=o();e.exports.getOrSetContext=i,l.backlog=d},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!S++){var t=T.info=NREUM.info,e=v.getElementsByTagName("script")[0];if(setTimeout(f.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return f.abort();c(R,function(e,n){t[e]||(t[e]=n)});var n=a();s("mark",["onload",n+T.offset],null,"api"),s("timing",["load",n]);var r=v.createElement("script");0===t.agent.indexOf("http://")||0===t.agent.indexOf("https://")?r.src=t.agent:r.src=h+"://"+t.agent,e.parentNode.insertBefore(r,e)}}function o(){"complete"===v.readyState&&i()}function i(){s("mark",["domContent",a()+T.offset],null,"api")}var a=t(26),s=t("handle"),c=t(32),f=t("ee"),u=t(30),d=t(27),p=t(21),l=t(23),h=p.getConfiguration("ssl")===!1?"http":"https",m=window,v=m.document,w="addEventListener",g="attachEvent",y=m.XMLHttpRequest,x=y&&y.prototype,b=!d(m.location);NREUM.o={ST:setTimeout,SI:m.setImmediate,CT:clearTimeout,XHR:y,REQ:m.Request,EV:m.Event,PR:m.Promise,MO:m.MutationObserver};var E=""+location,R={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1215.min.js"},O=y&&x&&x[w]&&!/CriOS/.test(navigator.userAgent),T=e.exports={offset:a.getLastTimestamp(),now:a,origin:E,features:{},xhrWrappable:O,userAgent:u,disabled:b};if(!b){t(20),t(28),v[w]?(v[w]("DOMContentLoaded",i,l(!1)),m[w]("load",r,l(!1))):(v[g]("onreadystatechange",o),m[g]("onload",r)),s("mark",["firstbyte",a.getLastTimestamp()],null,"api");var S=0}},{}],"wrap-function":[function(t,e,n){function r(t,e){function n(e,n,r,c,f){function nrWrapper(){var i,a,u,p;try{a=this,i=d(arguments),u="function"==typeof r?r(i,a):r||{}}catch(l){o([l,"",[i,a,c],u],t)}s(n+"start",[i,a,c],u,f);try{return p=e.apply(a,i)}catch(h){throw s(n+"err",[i,a,h],u,f),h}finally{s(n+"end",[i,a,p],u,f)}}return a(e)?e:(n||(n=""),nrWrapper[p]=e,i(e,nrWrapper,t),nrWrapper)}function r(t,e,r,o,i){r||(r="");var s,c,f,u="-"===r.charAt(0);for(f=0;f<e.length;f++)c=e[f],s=t[c],a(s)||(t[c]=n(s,u?c+r:r,o,c,i))}function s(n,r,i,a){if(!h||e){var s=h;h=!0;try{t.emit(n,r,i,e,a)}catch(c){o([c,n,r,i],t)}h=s}}return t||(t=u),n.inPlace=r,n.flag=p,n}function o(t,e){e||(e=u);try{e.emit("internal-error",t)}catch(n){}}function i(t,e,n){if(Object.defineProperty&&Object.keys)try{var r=Object.keys(t);return r.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(i){o([i],n)}for(var a in t)l.call(t,a)&&(e[a]=t[a]);return e}function a(t){return!(t&&t instanceof Function&&t.apply&&!t[p])}function s(t,e){var n=e(t);return n[p]=t,i(t,n,u),n}function c(t,e,n){var r=t[e];t[e]=s(r,n)}function f(){for(var t=arguments.length,e=new Array(t),n=0;n<t;++n)e[n]=arguments[n];return e}var u=t("ee"),d=t(33),p="nr@original",l=Object.prototype.hasOwnProperty,h=!1;e.exports=r,e.exports.wrapFunction=s,e.exports.wrapInPlace=c,e.exports.argsToArray=f},{}]},{},["loader",2,17,5,3,4]);</script>  <title>Phishing Websites Dataset - Mendeley Data</title> <meta data-react-helmet="true" name="title" content="Phishing Websites Dataset"><meta data-react-helmet="true" name="description" content="These data consist of a collection of legitimate as well as phishing website instances. Each website is represented by the set of features which denote, whether website is legitimate or not. Data can serve as an input for machine learning process.
+
+In this repository the two variants of the Phishing Dataset are presented.
+
+Full variant - dataset_full.csv
+Short description of the full variant dataset:
+Total number of instances: 88,647
+Number of legitimate website instances (labeled as 0): 58,000
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111
+
+Small variant - dataset_small.csv
+Short description of the small variant dataset:
+Total number of instances: 58,645
+Number of legitimate website instances (labeled as 0): 27,998
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111"><meta data-react-helmet="true" name="citation_title" content="Phishing Websites Dataset"><meta data-react-helmet="true" name="citation_author" content="Vrbančič, Grega"><meta data-react-helmet="true" name="citation_publication_date" content="24 September 2020"><meta data-react-helmet="true" name="citation_volume" content="1"><meta data-react-helmet="true" name="citation_doi" content="10.17632/72ptz43s9v.1"><meta data-react-helmet="true" name="citation_publisher" content="Mendeley Data"><meta data-react-helmet="true" name="dc.Contributor" content="Vrbančič, Grega"><meta data-react-helmet="true" name="dc.Title" content="Phishing Websites Dataset"><meta data-react-helmet="true" name="dc.Date" content="24 September 2020"><meta data-react-helmet="true" name="openGraphUrl" property="og:url" content="/datasets/72ptz43s9v/1"><meta data-react-helmet="true" name="openGraphTitle" property="og:title" content="Phishing Websites Dataset"><meta data-react-helmet="true" name="openGraphDescription" property="og:description" content="These data consist of a collection of legitimate as well as phishing website instances. Each website is represented by the set of features which denote, whether website is legitimate or not. Data can serve as an input for machine learning process.
+
+In this repository the two variants of the Phishing Dataset are presented.
+
+Full variant - dataset_full.csv
+Short description of the full variant dataset:
+Total number of instances: 88,647
+Number of legitimate website instances (labeled as 0): 58,000
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111
+
+Small variant - dataset_small.csv
+Short description of the small variant dataset:
+Total number of instances: 58,645
+Number of legitimate website instances (labeled as 0): 27,998
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111"><meta data-react-helmet="true" name="openGraphType" property="og:type" content="website"><meta data-react-helmet="true" name="openGraphLocale" property="og:locale" content="en_GB"><meta data-react-helmet="true" name="openGraphSiteName" property="og:site_name" content="Mendeley Data">  <script src="./Phishing Websites Dataset - Mendeley Data_files/satelliteLib-4a7497b2b1d1900fe42ef2c13e32daeedf9c1642.js.pobrane"></script><script src="./Phishing Websites Dataset - Mendeley Data_files/AppMeasurement.min.js.pobrane" async=""></script><script src="./Phishing Websites Dataset - Mendeley Data_files/AppMeasurement_Module_ActivityMap.min.js.pobrane" async=""></script><script>
+function targetPageParams() {
+  var env = {
+    prod: {"at_property": "f3d92953-3879-3af5-7639-b13949be6e3c"},
+    dev:  {"at_property": "a3baabea-9bac-3985-37f9-50b574636046"}
+  }
+  return (_satellite && _satellite.buildInfo && _satellite.buildInfo.environment &&
+          _satellite.buildInfo.environment == 'production') ? env.prod : env.dev;
+}
+
+function targetPageParamsAll() {
+  var dataElements = [
+    "Page - Name",
+    "Page - Product Name",
+    "Page - Business Unit",
+    "Page - Type",
+    "Page - Language",
+    "Search - Type",
+    "Search - Total Results",
+    "Search - Sort Type",
+    "Search - Feature Used",
+    "Visitor - User ID",
+    "Visitor - Access Type",
+    "Visitor - Account ID",
+    "Visitor - Account Name"
+  ];
+  var targetParams = {};
+
+  for(var i=0; i<dataElements.length; i++) {
+    try {
+      var ele = _satellite.getVar(dataElements[i]);
+      if(ele) {
+        targetParams[dataElements[i]] = ele;
+      }
+    } catch(e){}
+  }
+
+  return targetParams;
+}
+
+</script><script>
+document.addEventListener(adobe.target.event.REQUEST_SUCCEEDED, function(e) {
+  try {
+    window.targetData = window.targetData || {};
+    if(!(e.detail && e.detail.responseTokens)) {
+      return;
+    }
+
+    e.detail.responseTokens.forEach(function(token) {
+      window.targetData[token["activity.id"]] = token;
+    });
+  } catch(ex) {
+    _satellite.logger.log(ex.getMessage());
+  }
+});
+
+</script><script>
+  (function(apiKey){
+    (function(p,e,n,d,o){var v,w,x,y,z;o=p[d]=p[d]||{};o._q=[];
+      v=['initialize','identify','updateOptions','pageLoad'];for(w=0,x=v.length;w<x;++w)(function(m){
+      o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
+      y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
+      z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
+  })('63e37363-87d4-41d6-430e-06d0a2dfe6dc');
+</script>
+<script>
+var pageDataTracker = {
+    eventCookieName: 'eventTrack',
+    debugCookie: 'els-aa-debugmode',
+    debugCounter: 1,
+    warnings: [],
+    measures: {},
+    timeoffset: 0
+
+    ,trackPageLoad: function(data) {
+        if (window.pageData && ((pageData.page && pageData.page.noTracking == 'true') || window.pageData_isLoaded)) {
+            return false;
+        }
+
+        if (data) {
+            window.pageData = data;
+        }
+
+        this.initWarnings();
+        if(!(window.pageData && pageData.page && pageData.page.name)) {
+            console.error('pageDataTracker.trackPageLoad() called without pageData.page.name being defined!');
+            return;
+        }
+
+        this.processIdPlusData(window.pageData);
+
+        if(window.pageData && pageData.page && !pageData.page.loadTime) {
+          pageData.page.loadTime = performance ? Math.round((performance.now())).toString() : '';
+        }
+
+        if(window.pageData && pageData.page) {
+            var localTime = new Date().getTime();
+            if(pageData.page.loadTimestamp) {
+                // calculate timeoffset
+                var serverTime = parseInt(pageData.page.loadTimestamp);
+                if(!isNaN(serverTime)) {
+                    this.timeoffset = pageData.page.loadTimestamp - localTime;
+                }
+            } else {
+                pageData.page.loadTimestamp = localTime;
+            }
+        }
+
+        this.validateData(window.pageData);
+
+        try {
+            var cookieTest = 'aa-cookie-test';
+            this.setCookie(cookieTest, cookieTest);
+            if(this.getCookie(cookieTest) != cookieTest) {
+                this.warnings.push('dtm5');
+            }
+            this.deleteCookie(cookieTest);
+        } catch(e){
+            this.warnings.push('dtm5');
+        }
+
+        this.registerCallbacks();
+        this.setAnalyticsData();
+
+        // handle any cookied event data
+        this.getEvents();
+
+        window.pageData_isLoaded = true;
+
+        this.debugMessage('Init - trackPageLoad()', window.pageData);
+
+        _satellite.track('eventDispatcher', JSON.stringify({
+          eventName: 'newPage',
+          eventData: {eventName: 'newPage'},
+          pageData: window.pageData
+        }));
+    }
+
+    ,trackEvent: function(event, data, callback) {
+        if(!window.pageData_isLoaded) {
+            if(this.isDebugEnabled()) {
+                console.log('[AA] pageDataTracker.trackEvent() called without calling trackPageLoad() first.');
+            }
+            return false;
+        }
+        if (window.pageData && pageData.page && pageData.page.noTracking == 'true') {
+            return false;
+        }
+
+        if (event) {
+            this.initWarnings();
+            if(event === 'newPage') {
+                // auto fillings
+                if(data.page && !data.page.loadTimestamp) {
+                    data.page.loadTimestamp = ''+(new Date().getTime() + this.timeoffset);
+                }
+                this.processIdPlusData(data);
+            }
+
+            window.eventData = data ? data : {};
+            window.eventData.eventName = event;
+            this.handleEventData(event, data);
+
+            if(event === 'newPage') {
+                this.validateData(window.pageData);
+            }
+            this.debugMessage('Event: ' + event, data);
+
+            _satellite.track('eventDispatcher', JSON.stringify({
+              eventName: event,
+              eventData: window.eventData,
+              pageData: window.pageData
+            }));
+        }
+
+        if (typeof(callback) == 'function') {
+            callback.call();
+        }
+    }
+
+    ,processIdPlusData: function(data) {
+        if(data && data.visitor && data.visitor.idPlusData) {
+            var idPlusFields = ['userId', 'accessType', 'accountId', 'accountName'];
+            for(var i=0; i < idPlusFields.length; i++) {
+                if(typeof data.visitor.idPlusData[idPlusFields[i]] !== 'undefined') {
+                    data.visitor[idPlusFields[i]] = data.visitor.idPlusData[idPlusFields[i]];
+                }
+            }
+            data.visitor.idPlusData = undefined;
+        }
+    }
+
+    ,validateData: function(data) {
+        if(!data) {
+            this.warnings.push('dv0');
+            return;
+        }
+
+        // top 5
+        if(!(data.visitor && data.visitor.accessType)) {
+            this.warnings.push('dv1');
+        }
+        if(data.visitor && (data.visitor.accountId || data.visitor.accountName)) {
+            if(!data.visitor.accountName) {
+                this.warnings.push('dv2');
+            }
+            if(!data.visitor.accountId) {
+                this.warnings.push('dv3');
+            }
+        }
+        if(!(data.page && data.page.productName)) {
+            this.warnings.push('dv4');
+        }
+        if(!(data.page && data.page.businessUnit)) {
+            this.warnings.push('dv5');
+        }
+        if(!(data.page && data.page.name)) {
+            this.warnings.push('dv6');
+        }
+
+        // rp mandatory
+        if(data.page && data.page.businessUnit && (data.page.businessUnit.toLowerCase().indexOf('els:rp:') !== -1 || data.page.businessUnit.toLowerCase().indexOf('els:rap:') !== -1)) {
+            if(!(data.page && data.page.loadTimestamp)) {
+                this.warnings.push('dv7');
+            }
+            if(!(data.page && data.page.loadTime)) {
+                this.warnings.push('dv8');
+            }
+            if(!(data.visitor && data.visitor.ipAddress)) {
+                this.warnings.push('dv9');
+            }
+            if(!(data.page && data.page.type)) {
+                this.warnings.push('dv10');
+            }
+            if(!(data.page && data.page.language)) {
+                this.warnings.push('dv11');
+            }
+        }
+
+        // other
+        if(data.page && data.page.environment) {
+            var env = data.page.environment.toLowerCase();
+            if(!(env === 'dev' || env === 'cert' || env === 'prod')) {
+                this.warnings.push('dv12');
+            }
+        }
+        if(data.content && data.content.constructor !== Array) {
+            this.warnings.push('dv13');
+        }
+    }
+
+    ,initWarnings: function() {
+        this.warnings = [];
+        try {
+            var hdn = document.head.childNodes;
+            var libf = false;
+            for(var i=0; i<hdn.length; i++) {
+                if(hdn[i].src && (hdn[i].src.indexOf('satelliteLib') !== -1 || hdn[i].src.indexOf('launch') !== -1)) {
+                    libf = true;
+                    break;
+                }
+            }
+            if(!libf) {
+                this.warnings.push('dtm1');
+            }
+        } catch(e) {
+        }
+    }
+
+    ,getMessages: function() {
+        return this.warnings.join('|');
+    }
+    ,addMessage: function(message) {
+        this.warnings.push(message);
+    }
+
+    ,getPerformance: function() {
+        var copy = {};
+        for (var attr in this.measures) {
+            if(this.measures.hasOwnProperty(attr)) {
+                copy[attr] = this.measures[attr];
+            }
+        }
+
+        this.measures = {};
+        return copy;
+    }
+
+    ,dtmCodeDesc: {
+        dtm1: 'satellite-lib must be placed in the <head> section',
+        dtm2: 'trackPageLoad() must be placed and called before the closing </body> tag',
+        dtm3: 'trackEvent() must be called at a stage where Document.readyState=complete (e.g. on the load event or a user event)',
+        dv1: 'visitor.accessType not set but mandatory',
+        dv2: 'visitor.accountName not set but mandatory',
+        dv3: 'visitor.accountId not set but mandatory',
+        dv4: 'page.productName not set but mandatory',
+        dv5: 'page.businessUnit not set but mandatory',
+        dv6: 'page.name not set but mandatory',
+        dv7: 'page.loadTimestamp not set but mandatory',
+        dv8: 'page.loadTime not set but mandatory',
+        dv9: 'visitor.ipAddress not set but mandatory',
+        dv10: 'page.type not set but mandatory',
+        dv11: 'page.language not set but mandatory',
+        dv12: 'page.environment must be set to \'prod\', \'cert\' or \'dev\'',
+        dv13: 'content must be of type array of objects'
+    }
+
+    ,debugMessage: function(event, data) {
+        if(this.isDebugEnabled()) {
+            console.log('[AA] --------- [' + (this.debugCounter++) + '] Web Analytics Data ---------');
+            console.log('[AA] ' + event);
+            console.groupCollapsed("[AA] AA Data: ");
+            if(window.eventData) {
+                console.log("[AA] eventData:\n" + JSON.stringify(window.eventData, true, 2));
+            }
+            if(window.pageData) {
+                console.log("[AA] pageData:\n" + JSON.stringify(window.pageData, true, 2));
+            }
+            console.groupEnd();
+            if(this.warnings.length > 0) {
+                console.groupCollapsed("[AA] Warnings ("+this.warnings.length+"): ");
+                for(var i=0; i<this.warnings.length; i++) {
+                    var error = this.dtmCodeDesc[this.warnings[i]] ? this.dtmCodeDesc[this.warnings[i]] : 'Error Code: ' + this.warnings[i];
+                    console.log('[AA] ' + error);
+                }
+                console.log('[AA] More can be found here: https://confluence.cbsels.com/display/AA/AA+Error+Catalog');
+                console.groupEnd();
+            }
+            console.log("This mode can be disabled by calling 'pageDataTracker.disableDebug()'");
+        }
+    }
+
+    ,getTrackingCode: function() {
+      var campaign = _satellite.getVar('Campaign - ID');
+      if(!campaign) {
+        campaign = window.sessionStorage ? sessionStorage.getItem('dgcid') : '';
+      }
+      return campaign;
+    }
+
+    ,isDebugEnabled: function() {
+        if(typeof this.debug === 'undefined') {
+            this.debug = (document.cookie.indexOf(this.debugCookie) !== -1) || (window.pageData && pageData.page && pageData.page.environment && pageData.page.environment.toLowerCase() === 'dev');
+            //this.debug = (document.cookie.indexOf(this.debugCookie) !== -1);
+        }
+        return this.debug;
+    }
+
+    ,enableDebug: function(expire) {
+        if (typeof expire === 'undefined') {
+            expire = 86400;
+        }
+        console.log('You just enabled debug mode for Adobe Analytics tracking. This mode will persist for 24h.');
+        console.log("This mode can be disabled by calling 'pageDataTracker.disableDebug()'");
+        this.setCookie(this.debugCookie, 'true', expire, document.location.hostname);
+        this.debug = true;
+    }
+
+    ,disableDebug: function() {
+        console.log('Debug mode is now disabled.');
+        this.deleteCookie(this.debugCookie);
+        this.debug = false;
+    }
+
+    ,setAnalyticsData: function() {
+        if(!(window.pageData && pageData.page && pageData.page.productName && pageData.page.name)) {
+            return;
+        }
+        pageData.page.analyticsPagename = pageData.page.productName + ':' + pageData.page.name;
+
+        var pageEls = pageData.page.name.indexOf(':') > -1 ? pageData.page.name.split(':') : [pageData.page.name];
+        pageData.page.sectionName = pageData.page.productName + ':' + pageEls[0];
+    }
+
+    ,getEvents: function() {
+        pageData.savedEvents = {};
+        pageData.eventList = [];
+
+        var val = this.getCookie(this.eventCookieName);
+        if (val) {
+            pageData.savedEvents = val;
+        }
+
+        this.deleteCookie(this.eventCookieName);
+    }
+
+    ,handleEventData: function(event, data) {
+        var val;
+        switch(event) {
+            case 'newPage':
+                if (data && typeof(data) === 'object') {
+                    for (var x in data) {
+                        if(data.hasOwnProperty(x) && data[x] instanceof Array) {
+                            pageData[x] = data[x];
+                        } else if(data.hasOwnProperty(x) && typeof(data[x]) === 'object') {
+                            if(!pageData[x]) {
+                                pageData[x] = {};
+                            }
+                            for (var y in data[x]) {
+                                if(data[x].hasOwnProperty(y)) {
+                                    pageData[x][y] = data[x][y];
+                                }
+                            }
+                        }
+                    }
+                }
+                this.setAnalyticsData();
+            case 'saveSearch':
+            case 'searchResultsUpdated':
+                if (data) {
+                    // overwrite page-load object
+                    if (data.search && typeof(data.search) == 'object') {
+                        window.eventData.search.resultsPosition = '';
+                        pageData.search = pageData.search || {};
+                        var fields = ['advancedCriteria', 'criteria', 'currentPage', 'dataFormCriteria', 'facets', 'resultsByType', 'resultsPerPage', 'sortType', 'totalResults', 'type', 'database',
+                        'suggestedClickPosition','suggestedLetterCount','suggestedResultCount', 'autoSuggestCategory', 'autoSuggestDetails','typedTerm','selectedTerm', 'channel',
+                        'facetOperation', 'details'];
+                        for (var i=0; i<fields.length; i++) {
+                            if (data.search[fields[i]]) {
+                                pageData.search[fields[i]] = data.search[fields[i]];
+                            }
+                        }
+                    }
+                }
+                this.setAnalyticsData();
+                break;
+            case 'navigationClick':
+                if (data && data.link) {
+                    window.eventData.navigationLink = {
+                        name: ((data.link.location || 'no location') + ':' + (data.link.name || 'no name'))
+                    };
+                }
+                break;
+            case 'autoSuggestClick':
+                if (data && data.search) {
+                    val = {
+                        autoSuggestSearchData: (
+                            'letterct:' + (data.search.suggestedLetterCount || 'none') +
+                            '|resultct:' + (data.search.suggestedResultCount || 'none') +
+                            '|clickpos:' + (data.search.suggestedClickPosition || 'none')
+                        ).toLowerCase(),
+                        autoSuggestSearchTerm: (data.search.typedTerm || ''),
+                        autoSuggestTypedTerm: (data.search.typedTerm || ''),
+                        autoSuggestSelectedTerm: (data.search.selectedTerm || ''),
+                        autoSuggestCategory: (data.search.autoSuggestCategory || ''),
+                        autoSuggestDetails: (data.search.autoSuggestDetails || '')
+                    };
+                }
+                break;
+            case 'linkOut':
+                if (data && data.content && data.content.length > 0) {
+                    window.eventData.linkOut = data.content[0].linkOut;
+                    window.eventData.referringProduct = _satellite.getVar('Page - Product Name') + ':' + data.content[0].id;
+                }
+                break;
+            case 'socialShare':
+                if (data && data.social) {
+                    window.eventData.sharePlatform = data.social.sharePlatform || '';
+                }
+                break;
+            case 'contentInteraction':
+                if (data && data.action) {
+                    window.eventData.action.name = pageData.page.productName + ':' + data.action.name;
+                }
+                break;
+            case 'searchWithinContent':
+                if (data && data.search) {
+                    window.pageData.search = window.pageData.search || {};
+                    pageData.search.withinContentCriteria = data.search.withinContentCriteria;
+                }
+                break;
+            case 'contentShare':
+                if (data && data.content) {
+                    window.eventData.sharePlatform = data.content[0].sharePlatform;
+                }
+                break;
+            case 'contentLinkClick':
+                if (data && data.link) {
+                    window.eventData.action = { name: pageData.page.productName + ':' + (data.link.type || 'no link type') + ':' + (data.link.name || 'no link name') };
+                }
+                break;
+            case 'contentWindowLoad':
+            case 'contentTabClick':
+                if (data && data.content) {
+                    window.eventData.tabName = data.content[0].tabName || '';
+                    window.eventData.windowName = data.content[0].windowName || '';
+                }
+                break;
+            case 'userProfileUpdate':
+                if (data && data.user) {
+                    if (Object.prototype.toString.call(data.user) === "[object Array]") {
+                        window.eventData.user = data.user[0];
+                    }
+                }
+                break;
+            case 'videoStart':
+                if (data.video) {
+                    data.video.length = parseFloat(data.video.length || '0');
+                    data.video.position = parseFloat(data.video.position || '0');
+                    s.Media.open(data.video.id, data.video.length, s.Media.playerName);
+                    s.Media.play(data.video.id, data.video.position);
+                }
+                break;
+            case 'videoPlay':
+                if (data.video) {
+                    data.video.position = parseFloat(data.video.position || '0');
+                    s.Media.play(data.video.id, data.video.position);
+                }
+                break;
+            case 'videoStop':
+                if (data.video) {
+                    data.video.position = parseFloat(data.video.position || '0');
+                    s.Media.stop(data.video.id, data.video.position);
+                }
+                break;
+            case 'videoComplete':
+                if (data.video) {
+                    data.video.position = parseFloat(data.video.position || '0');
+                    s.Media.stop(data.video.id, data.video.position);
+                    s.Media.close(data.video.id);
+                }
+                break;
+            case 'addWebsiteExtension':
+                if(data && data.page) {
+                    val = {
+                        wx: data.page.websiteExtension
+                    }
+                }
+                break;
+        }
+
+        if (val) {
+            this.setCookie(this.eventCookieName, val);
+        }
+    }
+
+    ,registerCallbacks: function() {
+        var self = this;
+        if(window.usabilla_live) {
+            window.usabilla_live('setEventCallback', function(category, action, label, value) {
+                if(action == 'Campaign:Open') {
+                    self.trackEvent('ctaImpression', {
+                        cta: {
+                            ids: ['usabillaid:' + label]
+                        }
+                    });
+                } else if(action == 'Campaign:Success') {
+                    self.trackEvent('ctaClick', {
+                        cta: {
+                            ids: ['usabillaid:' + label]
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    ,getConsortiumAccountId: function() {
+        var id = '';
+        if (window.pageData && pageData.visitor && (pageData.visitor.consortiumId || pageData.visitor.accountId)) {
+            id = (pageData.visitor.consortiumId || 'no consortium ID') + '|' + (pageData.visitor.accountId || 'no account ID');
+        }
+
+        return id;
+    }
+
+    ,getSearchClickPosition: function() {
+        if (window.eventData && eventData.search && eventData.search.resultsPosition) {
+            var pos = parseInt(eventData.search.resultsPosition), clickPos;
+            if (!isNaN(pos)) {
+                var page = pageData.search.currentPage ? parseInt(pageData.search.currentPage) : '', perPage = pageData.search.resultsPerPage ? parseInt(pageData.search.resultsPerPage) : '';
+                if (!isNaN(page) && !isNaN(perPage)) {
+                    clickPos = pos + ((page - 1) * perPage);
+                }
+            }
+            return clickPos ? clickPos.toString() : eventData.search.resultsPosition;
+        }
+        return '';
+    }
+
+    ,getSearchFacets: function() {
+        var facetList = '';
+        if (window.pageData && pageData.search && pageData.search.facets) {
+            if (typeof(pageData.search.facets) == 'object') {
+                for (var i=0; i<pageData.search.facets.length; i++) {
+                    var f = pageData.search.facets[i];
+                    facetList += (facetList ? '|' : '') + f.name + '=' + f.values.join('^');
+                }
+            }
+        }
+        return facetList;
+    }
+
+    ,getSearchResultsByType: function() {
+        var resultTypes = '';
+        if (window.pageData && pageData.search && pageData.search.resultsByType) {
+            for (var i=0; i<pageData.search.resultsByType.length; i++) {
+                var r = pageData.search.resultsByType[i];
+                resultTypes += (resultTypes ? '|' : '') + r.name + (r.results || r.values ? '=' + (r.results || r.values) : '');
+            }
+        }
+        return resultTypes;
+    }
+
+    ,getJournalInfo: function() {
+        var info = '';
+        if (window.pageData && pageData.journal && (pageData.journal.name || pageData.journal.specialty || pageData.journal.section || pageData.journal.issn || pageData.journal.issueNumber || pageData.journal.volumeNumber)) {
+            var journal = pageData.journal;
+            return (journal.name || 'no name') + '|' + (journal.specialty || 'no specialty') + '|' + (journal.section || 'no section') + '|' + (journal.issn || 'no issn') + '|' + (journal.issueNumber || 'no issue #') + '|' + (journal.volumeNumber || 'no volume #');
+        }
+        return info;
+    }
+
+    ,getBibliographicInfo: function(doc) {
+        if (!doc || !(doc.publisher || doc.indexTerms || doc.publicationType || doc.publicationRights || doc.volumeNumber || doc.issueNumber || doc.subjectAreas || doc.isbn)) {
+            return '';
+        }
+
+        var terms = doc.indexTerms ? doc.indexTerms.split('+') : '';
+        if (terms) {
+            terms = terms.slice(0, 5).join('+');
+            terms = terms.length > 100 ? terms.substring(0, 100) : terms;
+        }
+
+        var areas = doc.subjectAreas ? doc.subjectAreas.split('>') : '';
+        if (areas) {
+            areas = areas.slice(0, 5).join('>');
+            areas = areas.length > 100 ? areas.substring(0, 100) : areas;
+        }
+
+        var biblio	= (doc.publisher || 'none')
+            + '^' + (doc.publicationType || 'none')
+            + '^' + (doc.publicationRights || 'none')
+            + '^' + (terms || 'none')
+            + '^' + (doc.volumeNumber || 'none')
+            + '^' + (doc.issueNumber || 'none')
+            + '^' + (areas || 'none')
+            + '^' + (doc.isbn || 'none');
+
+        return this.stripProductDelimiters(biblio).toLowerCase();
+    }
+
+    ,getContentItem: function() {
+        var docs = window.eventData && eventData.content ? eventData.content : pageData.content;
+        if (docs && docs.length > 0) {
+            return docs[0];
+        }
+    }
+
+    ,getFormattedDate: function(ts) {
+        if (!ts) {
+            return '';
+        }
+
+        var d = new Date(parseInt(ts) * 1000);
+
+        // now do formatting
+        var year = d.getFullYear()
+            ,month = ((d.getMonth() + 1) < 10 ? '0' : '') + (d.getMonth() + 1)
+            ,date = (d.getDate() < 10 ? '0' : '') + d.getDate()
+            ,hours = d.getHours() > 12 ? d.getHours() - 12 : d.getHours()
+            ,mins = (d.getMinutes() < 10 ? '0' : '') + d.getMinutes()
+            ,ampm = d.getHours() > 12 ? 'pm' : 'am';
+
+        hours = (hours < 10 ? '0' : '') + hours;
+        return year + '-' + month + '-' + date;
+    }
+
+    ,getVisitorId: function() {
+        var orgId = '4D6368F454EC41940A4C98A6@AdobeOrg';
+        if(Visitor && Visitor.getInstance(orgId)) {
+            return Visitor.getInstance(orgId).getMarketingCloudVisitorID();
+        } else {
+            return ''
+        }
+    }
+
+    ,setProductsVariable: function() {
+        var prodList = window.eventData && eventData.content ? eventData.content : pageData.content
+            ,prods = [];
+        if (prodList) {
+            for (var i=0; i<prodList.length; i++) {
+                if (prodList[i].id || prodList[i].type || prodList[i].publishDate || prodList[i].onlineDate) {
+                    if (!prodList[i].id) {
+                        prodList[i].id = 'no id';
+                    }
+                    var prodName = (pageData.page.productName || 'xx').toLowerCase();
+                    if (prodList[i].id.indexOf(prodName + ':') != 0) {
+                        prodList[i].id = prodName + ':' + prodList[i].id;
+                    }
+                    prodList[i].id = this.stripProductDelimiters(prodList[i].id);
+                    var merch = [];
+                    if (prodList[i].format) {
+                        merch.push('evar17=' + this.stripProductDelimiters(prodList[i].format.toLowerCase()));
+                    }
+                    if (prodList[i].type) {
+                        var type = prodList[i].type;
+                        if (prodList[i].accessType) {
+                            type += ':' + prodList[i].accessType;
+                        }
+                        merch.push('evar20=' + this.stripProductDelimiters(type.toLowerCase()));
+                    }
+                    if(!prodList[i].title) {
+                        prodList[i].title = prodList[i].name;
+                    }
+                    if (prodList[i].title) {
+                        merch.push('evar75=' + this.stripProductDelimiters(prodList[i].title.toLowerCase()));
+                    }
+                    if (prodList[i].breadcrumb) {
+                        merch.push('evar63=' + this.stripProductDelimiters(prodList[i].breadcrumb).toLowerCase());
+                    }
+                    var nowTs = new Date().getTime()/1000;
+                    if (prodList[i].onlineDate && !isNaN(prodList[i].onlineDate)) {
+                        if(prodList[i].onlineDate > 32503680000) {
+                            prodList[i].onlineDate = prodList[i].onlineDate/1000;
+                        }
+                        merch.push('evar122=' + this.stripProductDelimiters(pageDataTracker.getFormattedDate(prodList[i].onlineDate)));
+                        var onlineAge = Math.floor((nowTs - prodList[i].onlineDate) / 86400);
+                        onlineAge = (onlineAge === 0) ? 'zero' : onlineAge;
+                        merch.push('evar128=' + onlineAge);
+                    }
+                    if (prodList[i].publishDate && !isNaN(prodList[i].publishDate)) {
+                        if(prodList[i].publishDate > 32503680000) {
+                            prodList[i].publishDate = prodList[i].publishDate/1000;
+                        }
+                        merch.push('evar123=' + this.stripProductDelimiters(pageDataTracker.getFormattedDate(prodList[i].publishDate)));
+                        var publishAge = Math.floor((nowTs - prodList[i].publishDate) / 86400);
+                        publishAge = (publishAge === 0) ? 'zero' : publishAge;
+                        merch.push('evar127=' + publishAge);
+                    }
+                    if (prodList[i].onlineDate && prodList[i].publishDate) {
+                        merch.push('evar38=' + this.stripProductDelimiters(pageDataTracker.getFormattedDate(prodList[i].onlineDate) + '^' + pageDataTracker.getFormattedDate(prodList[i].publishDate)));
+                    }
+                    if (prodList[i].mapId) {
+                        merch.push('evar70=' + this.stripProductDelimiters(prodList[i].mapId));
+                    }
+					if (prodList[i].relevancyScore) {
+						merch.push('evar71=' + this.stripProductDelimiters(prodList[i].relevancyScore));
+					}
+                    if (prodList[i].status) {
+                        merch.push('evar73=' + this.stripProductDelimiters(prodList[i].status));
+                    }
+                    if (prodList[i].previousStatus) {
+                        merch.push('evar111=' + this.stripProductDelimiters(prodList[i].previousStatus));
+                    }
+                    if (prodList[i].entitlementType) {
+                        merch.push('evar80=' + this.stripProductDelimiters(prodList[i].entitlementType));
+                    }
+                    if (prodList[i].recordType) {
+                        merch.push('evar93=' + this.stripProductDelimiters(prodList[i].recordType));
+                    }
+                    if (prodList[i].exportType) {
+                        merch.push('evar99=' + this.stripProductDelimiters(prodList[i].exportType));
+                    }
+                    if (prodList[i].importType) {
+                        merch.push('evar142=' + this.stripProductDelimiters(prodList[i].importType));
+                    }
+                    if (prodList[i].section) {
+                        merch.push('evar100=' + this.stripProductDelimiters(prodList[i].section));
+                    }
+                    if (prodList[i].detail) {
+                        merch.push('evar104=' + this.stripProductDelimiters(prodList[i].detail.toLowerCase()));
+                    } else if(prodList[i].details) {
+                        merch.push('evar104=' + this.stripProductDelimiters(prodList[i].details.toLowerCase()));
+                    }
+                    if (prodList[i].position) {
+                        merch.push('evar116=' + this.stripProductDelimiters(prodList[i].position));
+                    }
+                    if (prodList[i].publicationTitle) {
+                        merch.push('evar129=' + this.stripProductDelimiters(prodList[i].publicationTitle));
+                    }
+                    if (prodList[i].specialIssueTitle) {
+                        merch.push('evar130=' + this.stripProductDelimiters(prodList[i].specialIssueTitle));
+                    }
+                    if (prodList[i].specialIssueNumber) {
+                        merch.push('evar131=' + this.stripProductDelimiters(prodList[i].specialIssueNumber));
+                    }
+                    if (prodList[i].referenceModuleTitle) {
+                        merch.push('evar139=' + this.stripProductDelimiters(prodList[i].referenceModuleTitle));
+                    }
+                    if (prodList[i].referenceModuleISBN) {
+                        merch.push('evar140=' + this.stripProductDelimiters(prodList[i].referenceModuleISBN));
+                    }
+                    if (prodList[i].volumeTitle) {
+                        merch.push('evar132=' + this.stripProductDelimiters(prodList[i].volumeTitle));
+                    }
+                    if (prodList[i].publicationSection) {
+                        merch.push('evar133=' + this.stripProductDelimiters(prodList[i].publicationSection));
+                    }
+                    if (prodList[i].publicationSpecialty) {
+                        merch.push('evar134=' + this.stripProductDelimiters(prodList[i].publicationSpecialty));
+                    }
+                    if (prodList[i].issn) {
+                        merch.push('evar135=' + this.stripProductDelimiters(prodList[i].issn));
+                    }
+                    if (prodList[i].id2) {
+                        merch.push('evar159=' + this.stripProductDelimiters(prodList[i].id2));
+                    }
+                    if (prodList[i].id3) {
+                        merch.push('evar160=' + this.stripProductDelimiters(prodList[i].id3));
+                    }
+                    if (prodList[i].provider) {
+                        merch.push('evar164=' + this.stripProductDelimiters(prodList[i].provider));
+                    }
+                    if (prodList[i].citationStyle) {
+                        merch.push('evar170=' + this.stripProductDelimiters(prodList[i].citationStyle));
+                    }
+
+                    var biblio = this.getBibliographicInfo(prodList[i]);
+                    if (biblio) {
+                        merch.push('evar28=' + biblio);
+                    }
+
+                    if (prodList[i].turnawayId) {
+                        pageData.eventList.push('product turnaway');
+                    }
+
+                    var price = prodList[i].price || '', qty = prodList[i].quantity || '', evts = [];
+                    if (price && qty) {
+                        qty = parseInt(qty || '1');
+                        price = parseFloat(price || '0');
+                        price = (price * qty).toFixed(2);
+
+                        if (window.eventData && eventData.eventName && eventData.eventName == 'cartAdd') {
+                            evts.push('event20=' + price);
+                        }
+                    }
+
+                    var type = window.pageData && pageData.page && pageData.page.type ? pageData.page.type : '', evt = window.eventData && eventData.eventName ? eventData.eventName : '';
+                    if (type.match(/^CP\-/gi) !== null && (!evt || evt == 'newPage' || evt == 'contentView')) {
+                        evts.push('event181=1');
+                    }
+                    if (evt == 'contentDownload' || type.match(/^CP\-DL/gi) !== null) {
+                        evts.push('event182=1');
+                    }
+                    if (evt == 'contentExport') {
+                        evts.push('event184=1');
+                    }
+                    if (this.eventFires('recommendationViews')) {
+                        evts.push('event264=1');
+                    }
+
+                    if(prodList[i].datapoints) {
+                        evts.push('event239=' + prodList[i].datapoints);
+                    }
+                    if(prodList[i].documents) {
+                        evts.push('event240=' + prodList[i].documents);
+                    }
+
+                    prods.push([
+                        ''					// empty category
+                        ,prodList[i].id		// id
+                        ,qty				// qty
+                        ,price				// price
+                        ,evts.join('|')		// events
+                        ,merch.join('|')	// merchandising eVars
+                    ].join(';'));
+                }
+            }
+        }
+
+        return prods.join(',');
+    }
+    ,eventFires: function(eventName) {
+      var evt = window.eventData && eventData.eventName ? eventData.eventName : '';
+      if(evt == eventName) {
+        return true;
+      }
+      // initial pageload and new pages
+      if((!window.eventData || evt == 'newPage') && window.pageData && window.pageData.trackEvents) {
+        var tEvents = window.pageData.trackEvents;
+        for(var i=0; i<tEvents.length; i++) {
+          if(tEvents[i] == eventName) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    ,md5: function(s){function L(k,d){return(k<<d)|(k>>>(32-d))}function K(G,k){var I,d,F,H,x;F=(G&2147483648);H=(k&2147483648);I=(G&1073741824);d=(k&1073741824);x=(G&1073741823)+(k&1073741823);if(I&d){return(x^2147483648^F^H)}if(I|d){if(x&1073741824){return(x^3221225472^F^H)}else{return(x^1073741824^F^H)}}else{return(x^F^H)}}function r(d,F,k){return(d&F)|((~d)&k)}function q(d,F,k){return(d&k)|(F&(~k))}function p(d,F,k){return(d^F^k)}function n(d,F,k){return(F^(d|(~k)))}function u(G,F,aa,Z,k,H,I){G=K(G,K(K(r(F,aa,Z),k),I));return K(L(G,H),F)}function f(G,F,aa,Z,k,H,I){G=K(G,K(K(q(F,aa,Z),k),I));return K(L(G,H),F)}function D(G,F,aa,Z,k,H,I){G=K(G,K(K(p(F,aa,Z),k),I));return K(L(G,H),F)}function t(G,F,aa,Z,k,H,I){G=K(G,K(K(n(F,aa,Z),k),I));return K(L(G,H),F)}function e(G){var Z;var F=G.length;var x=F+8;var k=(x-(x%64))/64;var I=(k+1)*16;var aa=Array(I-1);var d=0;var H=0;while(H<F){Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=(aa[Z]| (G.charCodeAt(H)<<d));H++}Z=(H-(H%4))/4;d=(H%4)*8;aa[Z]=aa[Z]|(128<<d);aa[I-2]=F<<3;aa[I-1]=F>>>29;return aa}function B(x){var k="",F="",G,d;for(d=0;d<=3;d++){G=(x>>>(d*8))&255;F="0"+G.toString(16);k=k+F.substr(F.length-2,2)}return k}function J(k){k=k.replace(/rn/g,"n");var d="";for(var F=0;F<k.length;F++){var x=k.charCodeAt(F);if(x<128){d+=String.fromCharCode(x)}else{if((x>127)&&(x<2048)){d+=String.fromCharCode((x>>6)|192);d+=String.fromCharCode((x&63)|128)}else{d+=String.fromCharCode((x>>12)|224);d+=String.fromCharCode(((x>>6)&63)|128);d+=String.fromCharCode((x&63)|128)}}}return d}var C=Array();var P,h,E,v,g,Y,X,W,V;var S=7,Q=12,N=17,M=22;var A=5,z=9,y=14,w=20;var o=4,m=11,l=16,j=23;var U=6,T=10,R=15,O=21;s=J(s);C=e(s);Y=1732584193;X=4023233417;W=2562383102;V=271733878;for(P=0;P<C.length;P+=16){h=Y;E=X;v=W;g=V;Y=u(Y,X,W,V,C[P+0],S,3614090360);V=u(V,Y,X,W,C[P+1],Q,3905402710);W=u(W,V,Y,X,C[P+2],N,606105819);X=u(X,W,V,Y,C[P+3],M,3250441966);Y=u(Y,X,W,V,C[P+4],S,4118548399);V=u(V,Y,X,W,C[P+5],Q,1200080426);W=u(W,V,Y,X,C[P+6],N,2821735955);X=u(X,W,V,Y,C[P+7],M,4249261313);Y=u(Y,X,W,V,C[P+8],S,1770035416);V=u(V,Y,X,W,C[P+9],Q,2336552879);W=u(W,V,Y,X,C[P+10],N,4294925233);X=u(X,W,V,Y,C[P+11],M,2304563134);Y=u(Y,X,W,V,C[P+12],S,1804603682);V=u(V,Y,X,W,C[P+13],Q,4254626195);W=u(W,V,Y,X,C[P+14],N,2792965006);X=u(X,W,V,Y,C[P+15],M,1236535329);Y=f(Y,X,W,V,C[P+1],A,4129170786);V=f(V,Y,X,W,C[P+6],z,3225465664);W=f(W,V,Y,X,C[P+11],y,643717713);X=f(X,W,V,Y,C[P+0],w,3921069994);Y=f(Y,X,W,V,C[P+5],A,3593408605);V=f(V,Y,X,W,C[P+10],z,38016083);W=f(W,V,Y,X,C[P+15],y,3634488961);X=f(X,W,V,Y,C[P+4],w,3889429448);Y=f(Y,X,W,V,C[P+9],A,568446438);V=f(V,Y,X,W,C[P+14],z,3275163606);W=f(W,V,Y,X,C[P+3],y,4107603335);X=f(X,W,V,Y,C[P+8],w,1163531501);Y=f(Y,X,W,V,C[P+13],A,2850285829);V=f(V,Y,X,W,C[P+2],z,4243563512);W=f(W,V,Y,X,C[P+7],y,1735328473);X=f(X,W,V,Y,C[P+12],w,2368359562);Y=D(Y,X,W,V,C[P+5],o,4294588738);V=D(V,Y,X,W,C[P+8],m,2272392833);W=D(W,V,Y,X,C[P+11],l,1839030562);X=D(X,W,V,Y,C[P+14],j,4259657740);Y=D(Y,X,W,V,C[P+1],o,2763975236);V=D(V,Y,X,W,C[P+4],m,1272893353);W=D(W,V,Y,X,C[P+7],l,4139469664);X=D(X,W,V,Y,C[P+10],j,3200236656);Y=D(Y,X,W,V,C[P+13],o,681279174);V=D(V,Y,X,W,C[P+0],m,3936430074);W=D(W,V,Y,X,C[P+3],l,3572445317);X=D(X,W,V,Y,C[P+6],j,76029189);Y=D(Y,X,W,V,C[P+9],o,3654602809);V=D(V,Y,X,W,C[P+12],m,3873151461);W=D(W,V,Y,X,C[P+15],l,530742520);X=D(X,W,V,Y,C[P+2],j,3299628645);Y=t(Y,X,W,V,C[P+0],U,4096336452);V=t(V,Y,X,W,C[P+7],T,1126891415);W=t(W,V,Y,X,C[P+14],R,2878612391);X=t(X,W,V,Y,C[P+5],O,4237533241);Y=t(Y,X,W,V,C[P+12],U,1700485571);V=t(V,Y,X,W,C[P+3],T,2399980690);W=t(W,V,Y,X,C[P+10],R,4293915773);X=t(X,W,V,Y,C[P+1],O,2240044497);Y=t(Y,X,W,V,C[P+8],U,1873313359);V=t(V,Y,X,W,C[P+15],T,4264355552);W=t(W,V,Y,X,C[P+6],R,2734768916);X=t(X,W,V,Y,C[P+13],O,1309151649);Y=t(Y,X,W,V,C[P+4],U,4149444226);V=t(V,Y,X,W,C[P+11],T,3174756917);W=t(W,V,Y,X,C[P+2],R,718787259);X=t(X,W,V,Y,C[P+9],O,3951481745);Y=K(Y,h);X=K(X,E);W=K(W,v);V=K(V,g)}var i=B(Y)+B(X)+B(W)+B(V);return i.toLowerCase()}
+    ,stripProductDelimiters: function(val) {
+        if (val) {
+            return val.replace(/\;|\||\,/gi, '-');
+        }
+    }
+
+    ,setCookie: function(name, value, seconds, domain) {
+        domain = document.location.hostname;
+        var expires = '';
+        var expiresNow = '';
+        var date = new Date();
+        date.setTime(date.getTime() + (-1 * 1000));
+        expiresNow = "; expires=" + date.toGMTString();
+
+        if (typeof(seconds) != 'undefined') {
+            date.setTime(date.getTime() + (seconds * 1000));
+            expires = '; expires=' + date.toGMTString();
+        }
+
+        var type = typeof(value);
+        type = type.toLowerCase();
+        if (type != 'undefined' && type != 'string') {
+            value = JSON.stringify(value);
+        }
+
+        // fix scoping issues
+        // keep writing the old cookie, but make it expire
+        document.cookie = name + '=' + value + expiresNow + '; path=/';
+
+        // now just set the right one
+        document.cookie = name + '=' + value + expires + '; path=/; domain=' + domain;
+    }
+
+    ,getCookie: function(name) {
+        name = name + '=';
+        var carray = document.cookie.split(';'), value;
+
+        for (var i=0; i<carray.length; i++) {
+            var c = carray[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(name) == 0) {
+                value = c.substring(name.length, c.length);
+                try {
+                    value = JSON.parse(value);
+                } catch(ex) {}
+
+                return value;
+            }
+        }
+
+        return null;
+    }
+
+    ,deleteCookie: function(name) {
+        this.setCookie(name, '', -1);
+        this.setCookie(name, '', -1, document.location.hostname);
+    }
+
+    ,mapAdobeVars: function(s) {
+        var vars = {
+            pageName		: 'Page - Analytics Pagename'
+            ,channel		: 'Page - Section Name'
+            ,campaign		: 'Campaign - ID'
+            ,currencyCode	: 'Page - Currency Code'
+            ,purchaseID		: 'Order - ID'
+            ,prop1			: 'Visitor - Account ID'
+            ,prop2			: 'Page - Product Name'
+            ,prop4			: 'Page - Type'
+            ,prop6			: 'Search - Type'
+            ,prop7			: 'Search - Facet List'
+            ,prop8			: 'Search - Feature Used'
+            ,prop12			: 'Visitor - User ID'
+            ,prop13			: 'Search - Sort Type'
+            ,prop14			: 'Page - Load Time'
+            ,prop15         : 'Support - Topic Name'
+            ,prop16			: 'Page - Business Unit'
+            ,prop21			: 'Search - Criteria'
+            ,prop24			: 'Page - Language'
+            ,prop25			: 'Page - Product Feature'
+            ,prop28         : 'Support - Search Criteria'
+            ,prop30			: 'Visitor - IP Address'
+            ,prop33         : 'Page - Product Application Version'
+            ,prop34         : 'Page - Website Extensions'
+            ,prop60			: 'Search - Data Form Criteria'
+            ,prop65         : 'Page - Online State'
+            ,prop67         : 'Research Networks'
+
+            ,eVar3			: 'Search - Total Results'
+            ,eVar7			: 'Visitor - Account Name'
+            ,eVar15			: 'Event - Search Results Click Position'
+            ,eVar19			: 'Search - Advanced Criteria'
+            ,eVar21			: 'Promo - Clicked ID'
+            ,eVar22			: 'Page - Test ID'
+            ,eVar27			: 'Event - AutoSuggest Search Data'
+            ,eVar157		: 'Event - AutoSuggest Search Typed Term'
+            ,eVar156		: 'Event - AutoSuggest Search Selected Term'
+            ,eVar162		: 'Event - AutoSuggest Search Category'
+            ,eVar163		: 'Event - AutoSuggest Search Details'
+            ,eVar33			: 'Visitor - Access Type'
+            ,eVar34			: 'Order - Promo Code'
+            ,eVar39			: 'Order - Payment Method'
+            ,eVar41			: 'Visitor - Industry'
+            ,eVar42			: 'Visitor - SIS ID'
+            ,eVar43			: 'Page - Error Type'
+            ,eVar44			: 'Event - Updated User Fields'
+            ,eVar48			: 'Email - Recipient ID'
+            ,eVar51			: 'Email - Message ID'
+            ,eVar52			: 'Visitor - Department ID'
+            ,eVar53			: 'Visitor - Department Name'
+            ,eVar60			: 'Search - Within Content Criteria'
+            ,eVar61			: 'Search - Within Results Criteria'
+            ,eVar62			: 'Search - Result Types'
+            ,eVar74			: 'Page - Journal Info'
+            ,eVar76			: 'Email - Broadlog ID'
+            ,eVar78			: 'Visitor - Details'
+            ,eVar80         : 'Visitor - Usage Path Info'
+            ,eVar102		: 'Form - Name'
+            ,eVar103        : 'Event - Conversion Driver'
+            ,eVar105        : 'Search - Current Page'
+            ,eVar106        : 'Visitor - App Session ID'
+            ,eVar107        : 'Page - Secondary Product Name'
+            ,eVar117        : 'Search - Database'
+            ,eVar126        : 'Page - Environment'
+            ,eVar141        : 'Search - Criteria Original'
+            ,eVar143        : 'Page - Tabs'
+            ,eVar161        : 'Search - Channel'
+            ,eVar169        : 'Search - Facet Operation'
+            ,eVar173        : 'Search - Details'
+            ,eVar174        : 'Campaign - Spredfast ID'
+            ,eVar175        : 'Visitor - TMX Device ID'
+            ,eVar176        : 'Visitor - TMX Request ID'
+            ,eVar148        : 'Visitor - Platform Name'
+            ,eVar149        : 'Visitor - Platform ID'
+            ,eVar152        : 'Visitor - Product ID'
+            ,eVar153        : 'Visitor - Superaccount ID'
+            ,eVar154        : 'Visitor - Superaccount Name'
+            ,eVar177        : 'Page - Context Domain'
+            ,eVar189    : 'Page - Experimentation User Id'
+            ,eVar190    : 'Page - Identity User'
+
+            ,list2			: 'Page - Widget Names'
+            ,list3			: 'Promo - IDs'
+        };
+
+        for (var i in vars) {
+            s[i] = s[i] ? s[i] : _satellite.getVar(vars[i]);
+        }
+    }
+};
+
+// async support fallback
+(function(w) {
+	var eventBuffer = [];
+	if(w.appData) {
+		if(Array.isArray(w.appData)) {
+			eventBuffer = w.appData;
+		} else {
+			console.error('Elsevier DataLayer "window.appData" must be specified as array');
+			return;
+		}
+    }
+
+	w.appData = [];
+
+	var oldPush = w.appData.push;
+
+	var appDataPush = function() {
+        oldPush.apply(w.appData, arguments);
+        for(var i=0; i<arguments.length; i++) {
+            var data = arguments[i];
+            if(data.event) {
+                if(data.event == 'pageLoad') {
+                    w.pageDataTracker.trackPageLoad(data);
+                } else {
+                    w.pageDataTracker.trackEvent(data.event, data);
+                }
+            }
+        }
+	};
+
+	w.appData.push = appDataPush;
+	for(var i=0; i<eventBuffer.length; i++) {
+	    var data = eventBuffer[i];
+	    w.appData.push(data);
+	}
+})(window)
+
+</script><link rel="shortcut icon" href="https://static.mendeley.com/weblet-data/static-content/favicon.ico"><script async="" src="./Phishing Websites Dataset - Mendeley Data_files/jszip.js.pobrane"></script><script async="" src="./Phishing Websites Dataset - Mendeley Data_files/xlsx.min.js.pobrane"></script><style data-styled="active" data-styled-version="5.3.3"></style><link href="./Phishing Websites Dataset - Mendeley Data_files/app.css" rel="stylesheet"><link id="plx-css-summary" type="text/css" rel="stylesheet" href="./Phishing Websites Dataset - Mendeley Data_files/summary.css"><script type="text/javascript" src="./Phishing Websites Dataset - Mendeley Data_files/jquery.min.js.pobrane"></script><script type="text/javascript" src="./Phishing Websites Dataset - Mendeley Data_files/xss.js.pobrane"></script><script type="application/ld+json" data-react-helmet="true">{"@context":"http://schema.org/","@type":"Dataset","name":"Phishing Websites Dataset","description":"These data consist of a collection of legitimate as well as phishing website instances. Each website is represented by the set of features which denote, whether website is legitimate or not. Data can serve as an input for machine learning process.\n\nIn this repository the two variants of the Phishing Dataset are presented.\n\nFull variant - dataset_full.csv\nShort description of the full variant dataset:\nTotal number of instances: 88,647\nNumber of legitimate website instances (labeled as 0): 58,000\nNumber of phishing website instances (labeled as 1): 30,647\nTotal number of features: 111\n\nSmall variant - dataset_small.csv\nShort description of the small variant dataset:\nTotal number of instances: 58,645\nNumber of legitimate website instances (labeled as 0): 27,998\nNumber of phishing website instances (labeled as 1): 30,647\nTotal number of features: 111","url":"http://dx.doi.org/10.17632/72ptz43s9v.1","sameAs":"https://data.mendeley.com/datasets/72ptz43s9v/1","version":"1","keywords":"Artificial Intelligence, Computer Security and Privacy","publisher":{"@type":"Organization","name":"Mendeley Data"},"datePublished":"2020-09-24T12:25:59.692Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://data.mendeley.com/datasets/72ptz43s9v/1"},"includedInDataCatalog":"https://data.mendeley.com","license":{"@type":"CreativeWork","url":"http://creativecommons.org/licenses/by/4.0","text":"CC BY 4.0"},"author":{"@type":"Person","name":"Grega Vrbančič"},"citation":{"@type":"CreativeWork","text":"Vrbančič, Grega (2020), 'Phishing Websites Dataset', Mendeley Data, v1, http://dx.doi.org/10.17632/72ptz43s9v.1","headline":"Phishing Websites Dataset","datePublished":"2020-09-24T12:25:59.692Z","url":"https://data.mendeley.com/datasets/72ptz43s9v/1"}}</script><style id="detectElementResize" type="text/css">@keyframes resizeanim { from { opacity: 0; } to { opacity: 0; } } .resize-triggers { animation: 1ms resizeanim; visibility: hidden; opacity: 0; } .resize-triggers, .resize-triggers > div, .contract-trigger:before { content: " "; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; z-index: -1; } .resize-triggers > div { background: #eee; overflow: auto; } .contract-trigger:before { width: 200%; height: 200%; }</style><script src="./Phishing Websites Dataset - Mendeley Data_files/RCeda49fd1eb0d4b9b97ab4ab10327bff9-source.min.js.pobrane" async=""></script></head><body data-new-gr-c-s-check-loaded="14.1052.0" data-gr-ext-installed="" style=""><div id="root"><div><div class="content-inner"><header id="gh-cnt" class="mdui-public-header"><a class="anchor gh-skip-navigation" href="https://data.mendeley.com/datasets/72ptz43s9v/1#main"><span class="anchor-text">Skip to main content</span></a><div id="gh-main-cnt" class="u-flex-center-ver u-position-relative gh-sides-padding"><a id="gh-branding" class="u-flex-center-ver" aria-label="Mendeley Data homepage" href="https://data.mendeley.com/"><svg class="mdui-logo" viewBox="0 0 168 24" height="31.428" width="219.996" fill="#1A1A1A" aria-hidden="true"><path d="M3.72257576,23.9678528 C2.51900984,23.8192855 1.52496806,23.1839143 0.792286958,22.2659656 C-0.218307663,21.0022877 -0.308912698,18.1090796 0.792286958,17.0275785 C1.89174421,15.9458633 2.97922243,15.3556617 4.43674381,15.5097949 C7.41124613,15.443432 7.85163887,13.1547684 7.01267109,8.83561436 C6.7053545,8.07030034 6.56944694,7.24932711 6.59732542,6.42921018 C6.5156502,4.22168062 7.64429273,2.04433546 9.72603053,0.860078912 C9.97759018,0.71600721 10.2398221,0.598480665 10.5033607,0.491871886 C10.5763239,0.461045251 10.6479803,0.435784537 10.7211613,0.407954936 C10.8013119,0.379054966 10.8829871,0.348014257 10.9661869,0.32425206 C11.6130546,0.109535986 12.302829,-0.00734833768 13.0237489,0.000358321003 C15.2633921,0.020695337 17.2133606,1.19681708 18.3058482,2.94344564 C19.8043161,4.55884693 20.5594306,5.5408037 22.0239216,5.5408037 C23.5652962,5.5408037 24.2424382,4.55884693 25.7413417,2.94344564 C26.8340471,1.19681708 28.7837978,0.020695337 31.0232232,0.000358321003 C31.743054,-0.00734833768 32.434353,0.109535986 33.0816563,0.32425206 C33.1648561,0.348014257 33.2445711,0.379054966 33.3271176,0.407954936 C33.3994273,0.435784537 33.4723905,0.461045251 33.5433935,0.491871886 C33.8080212,0.598480665 34.0693819,0.71600721 34.3226839,0.860078912 C36.4020259,2.04433546 37.5315397,4.22168062 37.4494288,6.42921018 C37.4768717,7.24932711 37.3429244,8.07030034 37.0345188,8.83561436 C36.1946798,13.1547684 36.6357259,15.443432 39.6119707,15.5097949 C40.8963406,15.3749283 42.0955505,15.834973 42.9380031,16.672644 C42.9380031,16.672644 43.9847526,17.6860696 43.9997808,19.5151166 C44.0176405,21.759895 42.9380031,22.6390964 42.9380031,22.6390964 C42.2656527,23.3498216 41.3561176,23.8402647 40.3250497,23.9678528 C38.0046025,24.2542836 35.9466049,22.5947831 35.727062,20.2615922 C35.6551878,19.4740145 35.8032922,18.7101989 36.1173606,18.0337256 C39.3682518,11.0258039 23.3370412,10.8658908 26.0440845,17.4809869 C26.0499651,17.4895498 26.0573703,17.4970424 26.0632509,17.5088165 C27.3437004,19.5213248 26.6500056,22.1375213 24.5210051,23.3478949 C23.7391011,23.7923122 22.8718192,23.9789846 22.0239216,23.9447328 C21.1764596,23.9789846 20.310049,23.7923122 19.5268382,23.3478949 C17.3965308,22.1375213 16.7026182,19.5213248 17.9835034,17.5088165 C17.9906908,17.4970424 17.9963536,17.4895498 18.002452,17.4809869 C20.710802,10.8658908 4.67980924,11.0258039 7.92939367,18.0337256 C8.24215528,18.7101989 8.39265547,19.4740145 8.31991008,20.2615922 C8.10058492,22.5947831 6.04149837,24.2542836 3.72257576,23.9678528 Z M22.4817979,7 C20.0076627,7 18,8.7895507 18,11.0005046 C18,12.2372663 18.6297264,13.3428442 19.6189734,14.0760615 C20.0490415,14.440551 20.5896792,14.7067534 21.2469914,14.8427811 C21.6395247,14.9440955 22.054217,15 22.4817979,15 L22.5007914,15 L22.5188805,15 C22.9462352,15 23.3627365,14.9440955 23.7530086,14.8427811 C24.4116775,14.7067534 24.9505062,14.440551 25.3814788,14.0760615 C26.3704997,13.3428442 27,12.2372663 27,11.0005046 C27,8.7895507 24.9932417,7 22.5188805,7 C22.5120971,7 22.5062181,7.00161457 22.5007914,7.00161457 C22.494008,7.00161457 22.4885813,7 22.4817979,7 Z"></path><g transform="translate(52.000000, 5.000000)"><path d="M10.2262574,0.9702 L12.0399505,0.9702 L12.916901,12.9312 L11.3623069,12.9312 L10.7444554,3.03 L6.23951485,13.0698 L2.1730495,3.0696 L1.47487129,12.9312 L0,12.9312 L0.876950495,0.9702 L2.81083168,0.9702 L4.46507921,5.0298 C5.40182178,7.347 6.03960396,9.0498 6.37842574,9.9804 C6.69731683,9.129 7.33509901,7.5246 8.4119604,5.0892 L10.2262574,0.9702 Z"></path><path d="M16.5026139,8.2578 L16.5026139,8.5548 C16.5026139,10.6932 17.5589406,11.862 19.4529604,11.862 C20.5092871,11.862 21.7449901,11.4066 22.2837228,10.9314 L22.4033069,12.318 C21.6060792,12.7932 20.6693366,13.1694 18.9746238,13.1694 C16.7025248,13.1694 14.9081584,11.427 14.9081584,8.4762 C14.9081584,5.3874 16.6028713,3.7236 18.9347624,3.7236 C21.7057327,3.7236 22.5627525,5.1492 22.5627525,8.2584 L16.5026139,8.2584 L16.5026139,8.2578 Z M21.167,7.0698 C21.1072079,5.3274 20.3299109,5.0106 18.834505,5.0106 C18.4159604,5.0106 17.7383168,5.1888 17.6386634,5.2878 C17.5190792,5.4066 16.820901,5.9412 16.6614554,7.0698 L21.167,7.0698 Z"></path><path d="M31.949505,12.9312 L30.4148416,12.9312 C30.4148416,12.9312 30.4945644,10.8522 30.4746337,9.0498 C30.4746337,9.0498 30.4746337,7.8618 30.454703,7.149 C30.4148416,5.7828 30.2952574,5.0892 28.9194356,5.0892 C28.441099,5.0892 27.8033168,5.2476 27.663802,5.3268 C27.464495,5.4258 26.5875446,6.3366 26.168396,6.9108 L26.168396,12.9312 L24.6337327,12.9312 L24.6337327,6.456 C24.6337327,5.7432 24.613802,5.1294 24.5540099,4.6734 L24.4742871,3.9606 L25.8893663,3.9606 L26.1285347,5.2872 C26.8659703,4.3962 27.7030594,3.723 29.0589505,3.723 C30.6733366,3.723 31.7701287,4.2378 31.9295743,6.0798 C32.009297,6.9708 31.9893663,7.8618 31.9893663,8.7534 C31.9899703,10.2378 31.949505,12.9312 31.949505,12.9312 Z"></path><path d="M42.2536733,12.9312 L40.8385941,12.9312 C40.778802,12.7134 40.6990792,12.2382 40.6592178,11.862 C39.7623366,12.7926 39.0448317,13.1688 37.8489901,13.1688 C35.6964752,13.1688 34.0017624,11.2878 34.0017624,8.4954 C34.0017624,5.4654 35.776198,3.723 38.5864257,3.723 C39.4434455,3.723 39.9417129,3.822 40.5601683,4.119 L40.5601683,0 L42.0948317,0 L42.0948317,10.4562 C42.0948317,11.169 42.1147624,11.763 42.1745545,12.219 L42.2536733,12.9312 Z M40.5595644,6.6936 C40.5595644,5.4264 39.9018515,5.0304 38.4463069,5.0304 C37.8677129,5.0304 36.9907624,5.1294 36.7914554,5.3274 C36.5522871,5.5254 35.6753366,6.6342 35.6753366,8.3574 C35.6753366,10.7538 37.0904158,11.8626 38.0875545,11.8626 C39.1438812,11.8626 40.0407624,11.0706 40.5595644,10.2984 L40.5595644,6.6936 Z"></path><path d="M45.7608713,8.2578 L45.7608713,8.5548 C45.7608713,10.6932 46.817198,11.862 48.7112178,11.862 C49.7675446,11.862 51.0032475,11.4066 51.5419802,10.9314 L51.6615644,12.318 C50.8643366,12.7932 49.9275941,13.1694 48.2328812,13.1694 C45.9607822,13.1694 44.1664158,11.427 44.1664158,8.4762 C44.1664158,5.3874 45.8611287,3.7236 48.1930198,3.7236 C50.9639901,3.7236 51.8210099,5.1492 51.8210099,8.2584 L45.7608713,8.2584 L45.7608713,8.2578 Z M50.4252574,7.0698 C50.3654653,5.3274 49.5881683,5.0106 48.0927624,5.0106 C47.6742178,5.0106 46.9965743,5.1888 46.8969208,5.2878 C46.7773366,5.4066 46.0791584,5.9412 45.9197129,7.0698 L50.4252574,7.0698 Z"></path><polygon points="53.8925941 0 55.4272574 0 55.4272574 12.9312 53.8925941 12.9312"></polygon><path d="M59.093901,8.2578 L59.093901,8.5548 C59.093901,10.6932 60.1508317,11.862 62.0442475,11.862 C63.1011782,11.862 64.3368812,11.4066 64.8756139,10.9314 L64.9945941,12.318 C64.1973663,12.7932 63.2606238,13.1694 61.5659109,13.1694 C59.2932079,13.1694 57.4994455,11.427 57.4994455,8.4762 C57.4994455,5.3874 59.1941584,3.7236 61.5260495,3.7236 C64.2970198,3.7236 65.1534356,5.1492 65.1534356,8.2584 L59.093901,8.2584 L59.093901,8.2578 Z M63.7588911,7.0698 C63.699099,5.3274 62.921802,5.0106 61.426396,5.0106 C61.0084554,5.0106 60.3308119,5.1888 60.2311584,5.2878 C60.1115743,5.4066 59.413396,5.9412 59.2539505,7.0698 L63.7588911,7.0698 Z"></path><path d="M70.3154851,10.8522 L72.6679109,3.9606 L74.1826436,3.9606 L70.8336832,13.347 C70.1566436,15.2478 69.4983267,16.8918 69.4983267,16.8918 L67.8640099,16.8918 C67.8640099,16.8918 68.5615842,15.4062 69.0797822,14.1588 L69.5587228,13.0302 L66.0503168,3.9606 L67.6840297,3.9606 L70.3154851,10.8522 Z"></path><path d="M83.8683564,12.9312 L79.742099,12.9312 L79.742099,0.9702 L84.0477327,0.9702 C88.2935743,0.9702 89.7690495,4.1784 89.7690495,6.9108 C89.7684455,9.525 88.2537129,12.9312 83.8683564,12.9312 Z M83.7886337,2.2374 L81.3166238,2.2374 L81.3166238,11.6634 L83.5893267,11.6634 C86.6393267,11.6634 87.9946139,9.9006 87.9946139,6.9108 C87.9946139,4.8714 87.0379406,2.2374 83.7886337,2.2374 Z"></path><path d="M98.2389901,12.9312 C98.1393366,12.6342 98.0590099,12.3372 98.0197525,12.0798 L97.9593564,11.7036 C97.2219208,12.8124 96.3250396,13.1892 95.1889901,13.1892 C93.0159406,13.1892 91.3218317,11.565 91.3218317,8.6544 C91.3218317,5.5452 92.8371683,3.7236 95.647396,3.7236 C96.4651584,3.7236 97.3813663,3.981 97.920099,4.674 L98.2589208,3.9612 L99.4547624,3.9612 L99.3158515,5.2284 L99.3158515,10.2582 C99.3158515,10.9314 99.5151584,12.2976 99.7337921,12.9318 L98.2389901,12.9318 L98.2389901,12.9312 Z M97.7799802,7.9212 C97.7799802,5.9214 97.0425446,5.0298 95.6872574,5.0298 C94.9697525,5.0298 94.2123861,5.2278 94.0722673,5.3664 C93.833099,5.604 92.9760792,6.4554 92.9760792,8.436 C92.9760792,11.0106 94.1719208,11.8818 95.4480891,11.8818 C96.4246931,11.8818 97.2019901,11.1888 97.7799802,9.8022 L97.7799802,7.9212 Z"></path><path d="M106.827911,12.7134 C106.289178,12.951 105.452693,13.1886 104.754515,13.1886 C103.578604,13.1886 102.740911,12.5352 102.740911,10.9512 L102.740911,5.1492 L101.106594,5.1492 L101.106594,3.9612 L102.740911,3.9612 L102.740911,1.5642 L104.236317,1.5642 L104.236317,3.9606 L106.608673,3.9606 L106.608673,5.1486 L104.236317,5.1486 L104.236317,10.4556 C104.236317,11.4654 104.495416,11.8614 105.19299,11.8614 C105.671327,11.8614 106.150267,11.6634 106.708327,11.4456 L106.827911,12.7134 Z"></path><path d="M114.521762,12.9312 C114.422109,12.6342 114.341782,12.3372 114.302525,12.0798 L114.242129,11.7036 C113.504693,12.8124 112.607812,13.1892 111.471762,13.1892 C109.298713,13.1892 107.604604,11.565 107.604604,8.6544 C107.604604,5.5452 109.119941,3.7236 111.930168,3.7236 C112.747931,3.7236 113.664139,3.981 114.202871,4.674 L114.541693,3.9612 L115.737535,3.9612 L115.598624,5.2284 L115.598624,10.2582 C115.598624,10.9314 115.797931,12.2976 116.016564,12.9318 L114.521762,12.9318 L114.521762,12.9312 Z M114.062752,7.9212 C114.062752,5.9214 113.325317,5.0298 111.97003,5.0298 C111.252525,5.0298 110.495158,5.2278 110.35504,5.3664 C110.115871,5.604 109.258851,6.4554 109.258851,8.436 C109.258851,11.0106 110.454693,11.8818 111.730861,11.8818 C112.707465,11.8818 113.484762,11.1888 114.062752,9.8022 L114.062752,7.9212 Z"></path></g></svg></a><div id="gh-nav-cnt" class="u-flex-center-ver"> <nav aria-label="utilities" class="gh-nav gh-nav-utilities gh-nav-h"><ul class="gh-nav-list u-list-reset"><li class="gh-nav-item gh-move-to-spine"><a class="anchor button-link-primary gh-nav-action gh-icon-btn" href="https://data.mendeley.com/faq" tabindex="0" id="aa-globalheader-help" data-aa-region="aa-globalheader-help" data-aa-name="aa-globalheader-help" title="FAQ"><span class="anchor-text"></span><svg focusable="false" role="img" aria-label="FAQ" viewBox="0 0 114 128" width="21.375" height="24" class="gh-icon icon-help"><path d="m57 8c-14.7 0-28.5 5.72-38.9 16.1-10.38 10.4-16.1 24.22-16.1 38.9 0 30.32 24.68 55 55 55 14.68 0 28.5-5.72 38.88-16.1 10.4-10.4 16.12-24.2 16.12-38.9 0-30.32-24.68-55-55-55zm0 1e1c24.82 0 45 20.18 45 45 0 12.02-4.68 23.32-13.18 31.82s-19.8 13.18-31.82 13.18c-24.82 0-45-20.18-45-45 0-12.02 4.68-23.32 13.18-31.82s19.8-13.18 31.82-13.18zm-0.14 14c-11.55 0.26-16.86 8.43-16.86 18v2h1e1v-2c0-4.22 2.22-9.66 8-9.24 5.5 0.4 6.32 5.14 5.78 8.14-1.1 6.16-11.78 9.5-11.78 20.5v6.6h1e1v-5.56c0-8.16 11.22-11.52 12-21.7 0.74-9.86-5.56-16.52-16-16.74-0.39-0.01-0.76-0.01-1.14 0zm-4.86 5e1v1e1h1e1v-1e1h-1e1z"></path><rect x="0" y="0" width="100%" height="100%" stroke="none" opacity="0"><title>FAQ</title></rect></svg></a></li></ul></nav></div><div class="gh-profile-container"><button id="gh-cta-btn" class="button button-medium u-margin-left-m button-secondary gh-move-to-spine" type="button"><span class="button-text">Create account</span></button><button id="gh-signin-btn" class="button button-medium u-margin-left-s gh-move-to-spine button-primary" type="button"><span class="button-text">Sign in</span></button></div><div id="gh-mobile-menu" class=""><div class="gh-hamburger u-fill-grey7 u-margin-left-m"><button class="button-link button-medium u-flex-center-ver button-link-primary" aria-label="Toggle mobile menu" aria-expanded="false" type="button"><svg class="gh-hamburger-svg-el gh-hamburger-closed" role="img" aria-hidden="true" height="18" width="40"><path d="M0 14h40v2H0zm0-7h40v2H0zm0-7h40v2H0z"></path></svg></button></div><div id="gh-overlay" class="u-overlay u-display-none" role="button" tabindex="-1"></div><div id="gh-drawer" aria-label="Mobile menu" class="" role="navigation"><header id="gh-drawer-header" class="u-padding-s-xs text-s"><div class="gh-dh-opt"><div><p class="u-margin-bottom-s"></p><div class="gh-dh-actions"><button class="button-link button-medium button-link-secondary" type="button"><span class="button-link-text">Sign in</span></button><button class="button-link button-medium button-link-secondary u-margin-left-m" type="button"><span class="button-link-text">Create account</span></button></div></div></div></header><div id="gh-mob-inst-cnt"></div><nav aria-label="utilities" class="gh-nav gh-nav-utilities gh-nav-v"><ul class="gh-nav-list u-list-reset"><li class="gh-nav-item"><a class="anchor button-link-primary gh-nav-action" href="https://data.mendeley.com/faq" tabindex="0" id="aa-globalheader-help" data-aa-region="aa-globalheader-help" data-aa-name="aa-globalheader-help" title="FAQ"><span class="anchor-text">FAQ</span></a></li></ul></nav></div></div></div><div id="gh-sub-header" class="u-flex-center-ver gh-sides-padding gh-move-to-spine"></div></header></div><main id="main"><div class="content-inner main-content"><article class="content-left"><div class="sc-bdvvtL kAuynM"><h1 class="heading mdui-h1" aria-level="1" data-qa-id="dataset-title">Phishing Websites Dataset</h1><div data-qa-id="dataset-title-info" class="sc-bdvvtL sc-furwcr jGrfUo eZYUbM"><span class="mdui-text" data-qa-id="dataset-title-info-published-date">Published:<!-- --> <span>24 September 2020</span></span><span class="with-spacing">|</span><span class="mdui-text" data-qa-id="dataset-title-info-version"> Version 1 </span><span class="with-spacing">|</span><span class="mdui-text" data-qa-id="dataset-title-info-doi"> DOI: </span><span class="with-spacing mdui-text">10.17632/72ptz43s9v.1</span></div></div><section class="contributors mdui-text"><div class="contributors__heading">Contributor<!-- -->:</div><div class="contributors__item"><span class="contributor">Grega Vrbančič</span></div></section><section class="mdui-public-dataset"><div class="sc-bdvvtL sc-jRQBWg kAuynM hTVYfR"><h2 class="mdui-h4 ">Description</h2><p data-qa-id="dataset-description" class="preserve-formatting">These data consist of a collection of legitimate as well as phishing website instances. Each website is represented by the set of features which denote, whether website is legitimate or not. Data can serve as an input for machine learning process.
+
+In this repository the two variants of the Phishing Dataset are presented.
+
+Full variant - dataset_full.csv
+Short description of the full variant dataset:
+Total number of instances: 88,647
+Number of legitimate website instances (labeled as 0): 58,000
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111
+
+Small variant - dataset_small.csv
+Short description of the small variant dataset:
+Total number of instances: 58,645
+Number of legitimate website instances (labeled as 0): 27,998
+Number of phishing website instances (labeled as 1): 30,647
+Total number of features: 111</p></div><div class="sc-egiyK lorPIn"><a aria-describedby="zip-details" class="mdui-button secondary" download="Phishing Websites Dataset.zip" href="https://data.mendeley.com/api/datasets-v2/datasets/72ptz43s9v/zip/download?version=1">Download All <span>4 MB</span></a><button aria-label="Zip details" type="button" class="mdui-button action info"><svg class="mdui-icon" viewBox="0 0 16 16" height="20" width="20" aria-hidden="true"><path d="M8 0C5.8629 0 3.85396 0.832314 2.34306 2.34306C0.832 3.85427 0 5.86322 0 8C0 12.4113 3.58871 16 8 16H8.00126C10.1377 16 12.1467 15.1677 13.6576 13.6569C15.1682 12.1457 16 10.1368 16 8C16 3.58871 12.4113 0 8 0ZM12.5914 12.5911C11.3655 13.8173 9.73522 14.4922 8.00126 14.4922H8C4.42008 14.4922 1.50745 11.5799 1.50745 8C1.50745 6.26573 2.18275 4.63529 3.40863 3.40894C4.63529 2.18274 6.26573 1.50745 8 1.50745C11.5799 1.50745 14.4925 4.42039 14.4925 8.00016C14.4925 9.73443 13.8173 11.3647 12.5914 12.5912V12.5911ZM7.21569 4.07843H8.78431V5.64706H7.21569V4.07843ZM7.21569 6.58824H8.78431V11.9216H7.21569V6.58824Z"></path></svg></button><div class="mdui-tooltip" style="display: none;"><svg class="mdui-icon" viewBox="0 0 16 16" height="16" width="16" preserveAspectRatio="none" aria-hidden="true"><polygon points="0,8 16,0 16,16"></polygon></svg><div id="zip-details" class="content"><div class="title">Phishing Websites Dataset.zip</div><div class="label">SHA-256 checksum:</div><textarea readonly="" tabindex="-1">305a88b0e6138a29541c1bf6603ca960252a07c4b6c51cf58dbd408f47a4e099</textarea><button type="button" class="mdui-button action"><svg class="mdui-icon" height="16" width="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.76041667,3 L14.2395833,3 C15.2091667,3 16,3.82528302 16,4.83962264 L16,14.1603774 C16,15.174717 15.2091667,16 14.2395833,16 L4.76041667,16 C3.79083333,16 3,15.174717 3,14.1603774 L3,4.83962264 C3,3.82528302 3.79083333,3 4.76041667,3 Z M4.76041667,14.5849057 L14.2395833,14.5849057 C14.4589583,14.5849057 14.6458333,14.3904717 14.6458333,14.1603774 L14.6458333,4.83962264 C14.6458333,4.6095283 14.4589583,4.41509434 14.2395833,4.41509434 L4.76041667,4.41509434 C4.54104167,4.41509434 4.35416667,4.6095283 4.35416667,4.83962264 L4.35416667,14.1603774 C4.35416667,14.3904717 4.54104167,14.5849057 4.76041667,14.5849057 Z"></path><path d="M12.9526328,1.41509434 L1.76041667,1.41509434 C1.54104167,1.41509434 1.35416667,1.6095283 1.35416667,1.83962264 L1.35416667,12.9504769 C0.579303907,12.7581864 0,12.0285261 0,11.1603774 L0,1.83962264 C0,0.825283019 0.790833333,0 1.76041667,0 L11.2395833,0 C12.0695487,0 12.7685368,0.604717473 12.9526328,1.41509434 L12.9526328,1.41509434 Z"></path></svg>Copy Checksum</button></div></div></div><h2 class="mdui-h4 files-label">Files</h2><div class="mdui-file-tree" readonly=""><div class="file-list" role="presentation" style="position: relative;"><div style="overflow: visible; height: 0px; width: 0px;"><div aria-label="grid" aria-readonly="true" class="ReactVirtualized__Grid ReactVirtualized__List" role="grid" style="box-sizing: border-box; direction: ltr; position: relative; width: 942px; will-change: transform; overflow: hidden; height: 490px;"><div class="ReactVirtualized__Grid__innerScrollContainer" role="rowgroup" style="width: auto; height: 92px; max-width: 942px; max-height: 92px; overflow: hidden; position: relative;"><div class="row" role="row" tabindex="-1" style="height: 46px; left: 0px; position: absolute; top: 0px; width: 100%;"><div class="main" role="gridcell"><button aria-label="View dataset_full.csv" tabindex="0" type="button" class="mdui-button action"><div class="icon-container spreadsheet"><svg class="mdui-icon" viewBox="2 2 29 29" height="32" width="32" aria-hidden="true"><path d="M12 7H8V6h4v1zm6 0h-4V6h4v1zm6 0h-4V6h4v1zM12 9H8V8h4v1zm6 0h-4V8h4v1zm6 0h-4V8h4v1zm-12 2H8v-1h4v1zm6 0h-4v-1h4v1zm6 0h-4v-1h4v1zm-12 2H8v-1h4v1zm12 0h-4v-1h4v1zm-12 2H8v-1h4v1zm6 0h-4v-1h4v1zm6 0h-4v-1h4v1z"></path><path d="M23.979 2H8.022C6.36 2 5 3.37 5 5.044v22.912C5 29.63 6.36 31 8.022 31h15.957C25.641 31 27 29.63 27 27.956V5.044C27 3.37 25.641 2 23.979 2m0 .968c1.137 0 2.062.931 2.062 2.076v22.912a2.071 2.071 0 0 1-2.062 2.076H8.022a2.07 2.07 0 0 1-2.061-2.076V5.044a2.07 2.07 0 0 1 2.061-2.076h15.957"></path></svg><span>csv</span></div><span class="name" title="dataset_full.csv">dataset_full.csv</span></button></div><span class="file-size">24 MB</span><div role="gridcell"><a href="https://data.mendeley.com/public-files/datasets/72ptz43s9v/files/26197eb8-15bc-4e06-a269-aa10ddc286f0/file_downloaded" class="file-enabled" aria-label="Download file" tabindex="-1"><svg class="mdui-icon" viewBox="5 4 14 14" height="16" width="16" aria-hidden="true"><path d="M17.571 12.857v2.857H6.43v-2.857H5v4.286h14v-4.286h-1.429"></path><path d="M16.054 9.311l-.943-1.008-2.397 2.463V5h-1.428v5.763L8.754 8.3 7.711 9.311l4.172 4.189 4.171-4.189"></path></svg></a></div></div><div class="row" role="row" tabindex="-1" style="height: 46px; left: 0px; position: absolute; top: 46px; width: 100%;"><div class="main" role="gridcell"><button aria-label="View dataset_small.csv" tabindex="-1" type="button" class="mdui-button action"><div class="icon-container spreadsheet"><svg class="mdui-icon" viewBox="2 2 29 29" height="32" width="32" aria-hidden="true"><path d="M12 7H8V6h4v1zm6 0h-4V6h4v1zm6 0h-4V6h4v1zM12 9H8V8h4v1zm6 0h-4V8h4v1zm6 0h-4V8h4v1zm-12 2H8v-1h4v1zm6 0h-4v-1h4v1zm6 0h-4v-1h4v1zm-12 2H8v-1h4v1zm12 0h-4v-1h4v1zm-12 2H8v-1h4v1zm6 0h-4v-1h4v1zm6 0h-4v-1h4v1z"></path><path d="M23.979 2H8.022C6.36 2 5 3.37 5 5.044v22.912C5 29.63 6.36 31 8.022 31h15.957C25.641 31 27 29.63 27 27.956V5.044C27 3.37 25.641 2 23.979 2m0 .968c1.137 0 2.062.931 2.062 2.076v22.912a2.071 2.071 0 0 1-2.062 2.076H8.022a2.07 2.07 0 0 1-2.061-2.076V5.044a2.07 2.07 0 0 1 2.061-2.076h15.957"></path></svg><span>csv</span></div><span class="name" title="dataset_small.csv">dataset_small.csv</span></button></div><span class="file-size">15 MB</span><div role="gridcell"><a href="https://data.mendeley.com/public-files/datasets/72ptz43s9v/files/154607af-0e5d-487d-87e4-c5070b2eb544/file_downloaded" class="file-enabled" aria-label="Download file" tabindex="-1"><svg class="mdui-icon" viewBox="5 4 14 14" height="16" width="16" aria-hidden="true"><path d="M17.571 12.857v2.857H6.43v-2.857H5v4.286h14v-4.286h-1.429"></path><path d="M16.054 9.311l-.943-1.008-2.397 2.463V5h-1.428v5.763L8.754 8.3 7.711 9.311l4.172 4.189 4.171-4.189"></path></svg></a></div></div></div></div></div><div class="active-message mdui-h5">Drag files or folders here to upload</div><div class="resize-triggers"><div class="expand-trigger"><div style="width: 943px; height: 503px;"></div></div><div class="contract-trigger"></div></div></div></div><div class="sc-bdvvtL sc-jRQBWg kAuynM hTVYfR"><h2 class="mdui-h4 ">Categories</h2><div class="categories__list">Artificial Intelligence, Computer Security and Privacy</div></div><div class="sc-bdvvtL sc-jRQBWg kAuynM hTVYfR"><h2 class="mdui-h4 ">License</h2><button type="button" class="mdpd-licence" data-qa-id="dataset-licence-button" aria-label="Learn more"><span>CC BY 4.0</span><span class="mdui-text-small subtext">Learn more</span></button></div></section><div class="Toastify"></div></article><aside class="content-right"><div class="mdui-public-metric__wrapper"><div class="mdui-public-metrics"></div><div class="sc-bdvvtL sc-jRQBWg kAuynM hTVYfR"><h2 class="mdui-h4 ">Dataset metrics</h2><div class="plum-bigben-theme"><div class="PlumX-Summary"><div class="pps-container pps-container-vertical plx-no-print"><div class="pps-branding pps-branding-top"><img alt="plumX logo" src="./Phishing Websites Dataset - Mendeley Data_files/plumx-inverse-logo.png" class="plx-logo"></div><div class="pps-cols"><div class="pps-col plx-usage"><div class="plx-usage"><div class="pps-title">Usage</div><ul><li class="plx-usage"><span class="pps-label">Views: </span><span class="pps-count">9608</span></li><li class="plx-usage"><span class="pps-label">Downloads: </span><span class="pps-count">2603</span></li></ul></div></div></div><div><div class="pps-branding pps-branding-bottom"><img alt="plumX logo" src="./Phishing Websites Dataset - Mendeley Data_files/plumx-logo.png" class="plx-logo"></div><a target="_blank" href="https://plu.mx/plum/a/?mendeley_data_id=72ptz43s9v&amp;theme=plum-bigben-theme" class="pps-seemore" title="PlumX Metrics Detail Page">View details<svg fill="currentColor" tabindex="-1" focusable="false" width="16" height="16" viewBox="0 0 16 16" class="svg-arrow"><path d="M16 4.452l-1.26-1.26L8 9.932l-6.74-6.74L0 4.452l8 8 8-8z"></path></svg></a></div></div></div></div></div></div><div class="sc-bdvvtL sc-jRQBWg gGZDIK grmCxQ"><h2 class="mdui-h4 ">Latest version</h2><div class="latestVersion__item versions__children mdui-text-small"><div class=""><span class="mdui-text version">Version 1</span><div class="dataset-citation" data-qa-id="dataset-citation"><div class="version-info mdui-text"><div class="version-info-item"><span>Published:</span><span class="version-info-item"><span>24 Sep 2020</span></span></div><div class="version-info-item"><span>DOI: </span><span class="version-info-item">10.17632/72ptz43s9v.1</span></div></div><div class="mdui-citation"><p class="cite-dataset">Cite this dataset</p><textarea aria-label="Citation" readonly="" tabindex="-1" style="height:71px;">Vrbančič, Grega (2020), “Phishing Websites Dataset”, Mendeley Data, V1, doi: 10.17632/72ptz43s9v.1</textarea><div class="copy-to-clipboard"><button type="button" class="mdui-button action"><svg class="mdui-icon" height="16" width="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.76041667,3 L14.2395833,3 C15.2091667,3 16,3.82528302 16,4.83962264 L16,14.1603774 C16,15.174717 15.2091667,16 14.2395833,16 L4.76041667,16 C3.79083333,16 3,15.174717 3,14.1603774 L3,4.83962264 C3,3.82528302 3.79083333,3 4.76041667,3 Z M4.76041667,14.5849057 L14.2395833,14.5849057 C14.4589583,14.5849057 14.6458333,14.3904717 14.6458333,14.1603774 L14.6458333,4.83962264 C14.6458333,4.6095283 14.4589583,4.41509434 14.2395833,4.41509434 L4.76041667,4.41509434 C4.54104167,4.41509434 4.35416667,4.6095283 4.35416667,4.83962264 L4.35416667,14.1603774 C4.35416667,14.3904717 4.54104167,14.5849057 4.76041667,14.5849057 Z"></path><path d="M12.9526328,1.41509434 L1.76041667,1.41509434 C1.54104167,1.41509434 1.35416667,1.6095283 1.35416667,1.83962264 L1.35416667,12.9504769 C0.579303907,12.7581864 0,12.0285261 0,11.1603774 L0,1.83962264 C0,0.825283019 0.790833333,0 1.76041667,0 L11.2395833,0 C12.0695487,0 12.7685368,0.604717473 12.9526328,1.41509434 L12.9526328,1.41509434 Z"></path></svg>Copy to clipboard</button></div></div></div></div></div></div></aside></div></main><footer class="mdui-footer"><div class="footer-container"><div class="footer-contents"><div role="img" aria-label="Digital Commons Data"><svg class="mdui-logo" viewBox="0 0 276.8125 28.5488" height="20.626814179272973" width="200" aria-hidden="true"><path class="dclogocol1" d="M6.832,21.5518H0V1.6172h7.1289c7.0303,0,9.4727,5.3467,9.4727,9.9014 C16.6016,15.875,14.0933,21.5518,6.832,21.5518z M6.7002,3.7295H2.6074v15.71h3.7627c5.0498,0,7.2939-2.9375,7.2939-7.9209 C13.6641,8.1191,12.0801,3.7295,6.7002,3.7295z"></path><path class="dclogocol1" d="M21.6147,3.9932c-0.8911,0-1.6504-0.9238-1.6504-1.8477c0-0.8916,0.7261-1.8154,1.6504-1.8154 c0.8911,0,1.6831,0.8584,1.6831,1.7822S22.5059,3.9932,21.6147,3.9932z M20.3608,6.6006h2.541v14.9512h-2.541V6.6006z"></path><path class="dclogocol1" d="M29.1719,23.4336c0,2.3428,0.9243,2.9375,3.3008,2.9375c2.8052,0,4.6533-0.8916,4.6533-3.7627 c0-0.6602-0.0659-1.7168-0.0659-3.0693c-1.1553,1.2871-2.3765,1.9473-4.3564,1.9473c-3.5645,0-6.3701-2.4756-6.3701-7.0635 c0-5.1816,2.4756-8.2178,7.1289-8.2178c1.3535,0,2.9048,0.3955,3.7959,1.584l0.561-1.1885h1.98l-0.231,2.1123v11.0566 c0,1.1553,0.0332,2.7393,0.0332,3.1689c0,3.5312-2.5083,5.6104-7.0303,5.6104c-3.2671,0-6.0068-1.0234-6.0068-4.6201 L29.1719,23.4336z M37.0273,13.2021c0-3.334-1.2212-4.8193-3.4658-4.8193c-1.188,0-4.7616,0.474-4.4888,5.71 c0,4.1914,1.8154,5.2148,3.9609,5.2148c1.7163,0,3.2344-1.2539,3.9937-2.8057V13.2021z"></path><path class="dclogocol1" d="M45.4404,3.9932c-0.8911,0-1.6504-0.9238-1.6504-1.8477c0-0.8916,0.7266-1.8154,1.6504-1.8154 c0.8911,0,1.6831,0.8584,1.6831,1.7822S46.3315,3.9932,45.4404,3.9932z M44.1865,6.6006h2.541v14.9512h-2.541V6.6006z"></path><path class="dclogocol1" d="M59.1694,21.1885c-0.8911,0.3965-2.2773,0.793-3.4321,0.793c-1.9473,0-3.3335-1.0898-3.3335-3.7295V8.5811 h-2.7065V6.6006h2.7065V2.6074h2.4751v3.9932h3.9277v1.9805h-3.9277v8.8457c0,1.6826,0.4292,2.3428,1.5845,2.3428 c0.792,0,1.584-0.3301,2.5083-0.6934L59.1694,21.1885z"></path><path class="dclogocol1" d="M71.9072,21.5518c-0.165-0.4951-0.2969-0.9902-0.3628-1.4189l-0.0991-0.627 c-1.2212,1.8477-2.7065,2.4756-4.5879,2.4756c-3.5972,0-6.4028-2.707-6.4028-7.5586c0-5.1816,2.5083-8.2178,7.1621-8.2178 c1.353,0,2.8716,0.4287,3.7627,1.584l0.561-1.1885h1.98l-0.231,2.1123v8.3838c0,1.1221,0.3301,3.3994,0.6934,4.4551H71.9072z M71.1484,13.2021c0-3.334-1.2212-4.8193-3.4658-4.8193c-1.188,0-4.4888,0.4187-4.4888,5.6768c0,4.291,1.9805,5.7432,4.0928,5.7432 c1.6172,0,2.9043-1.1553,3.8618-3.4658V13.2021z"></path><path class="dclogocol1" d="M78.3081,0h2.541v21.5518h-2.541V0z"></path><path class="dclogocol1" d="M107.0195,20.793c-1.749,0.8906-4.2246,1.1553-5.7754,1.1553c-5.644,0-10.6938-3.6963-10.6938-10.2314 c0-5.6768,3.7954-10.4961,11.0234-10.4961c2.5088,0,4.291,0.5947,5.4458,1.1553l-0.165,2.5088 c-1.8149-1.0234-4.0596-1.3867-5.7427-1.3867c-5.0825,0-7.5908,3.6973-7.5908,7.8887c0,4.7197,3.2012,8.251,7.7891,8.251 c1.4189,0,3.5645-0.3301,5.5444-1.3857L107.0195,20.793z"></path><path class="dclogocol1" d="M116.1587,21.9482c-4.1587,0-6.9312-3.1025-6.9312-7.8555c0-4.3896,2.5415-7.8877,7.2939-7.8877 c4.1919,0,6.9644,3.0029,6.9644,7.8877C123.4858,18.7139,120.6802,21.9482,116.1587,21.9482z M116.1914,8.3828 c-1.188,0-4.2246,0.7505-4.2246,5.5449c0,4.7529,2.5415,5.8418,4.522,5.8418c3.3893,0,4.2573-2.9043,4.2573-5.4453 C120.7461,11.5518,119.855,8.3828,116.1914,8.3828z"></path><path class="dclogocol1" d="M148.6328,21.5518h-2.541c0,0,0.1318-3.4648,0.0986-6.4688c0,0,0-1.9805-0.0332-3.168 c-0.0654-2.2773-0.2637-3.4326-2.541-3.4326c-0.792,0-2.8349,0.485-4.5547,3.0361v10.0332h-2.541V11.5186 c0-2.0137-0.5283-3.0361-2.5088-3.0361c-0.792,0-2.7419,0.8168-4.5547,3.0361v10.0332h-2.541v-10.792 c0-1.1885-0.0332-2.2119-0.1323-2.9707l-0.1318-1.1885h2.3433l0.396,2.2119c1.2212-1.4854,2.6079-2.6074,4.8521-2.6074 c2.3428,0,3.9932,0.5938,4.5547,2.8047c1.2539-1.584,2.8047-2.8047,5.0498-2.8047c2.6729,0,4.4883,0.8574,4.752,3.9277 c0.1328,1.4844,0.0996,2.9697,0.0996,4.4551C148.6992,17.0635,148.6328,21.5518,148.6328,21.5518z"></path><path class="dclogocol1" d="M174.9004,21.5518h-2.541c0,0,0.1318-3.4648,0.0986-6.4688c0,0,0-1.9805-0.0332-3.168 c-0.0654-2.2773-0.2637-3.4326-2.541-3.4326c-0.792,0-3.2777,0.5956-4.5547,3.0361v10.0332h-2.541V11.5186 c0-2.0137-0.5283-3.0361-2.5088-3.0361c-0.792,0-2.5764,0.5403-4.5547,3.0361v10.0332h-2.541v-10.792 c0-1.1885-0.0332-2.2119-0.1318-2.9707l-0.1328-1.1885h2.3438l0.3965,2.2119c1.2207-1.4854,2.6074-2.6074,4.8516-2.6074 c2.3428,0,3.9932,0.5938,4.5547,2.8047c1.2539-1.584,2.8047-2.8047,5.0498-2.8047c2.6729,0,4.4883,0.8574,4.752,3.9277 c0.1328,1.4844,0.0996,2.9697,0.0996,4.4551C174.9668,17.0635,174.9004,21.5518,174.9004,21.5518z"></path><path class="dclogocol1" d="M185.1934,21.9482c-4.1582,0-6.9307-3.1025-6.9307-7.8555c0-4.3896,2.541-7.8877,7.2939-7.8877 c4.1914,0,6.9639,3.0029,6.9639,7.8877C192.5205,18.7139,189.7158,21.9482,185.1934,21.9482z M185.2266,8.3828 c-1.1875,0-3.9661,0.8611-4.2246,5.5449c0,4.7529,2.542,5.8418,4.5215,5.8418c3.313,0.1826,4.2578-2.9043,4.2578-5.4453 C189.7812,11.5518,188.8906,8.3828,185.2266,8.3828z"></path><path class="dclogocol1" d="M208.0635,21.5518h-2.541c0,0,0.1318-3.4648,0.0986-6.4688c0,0,0-1.9805-0.0332-3.168 c-0.0654-2.2773-0.2637-3.4326-2.541-3.4326c-0.792,0-2.874,0.8721-4.5547,3.0361v10.0332h-2.541v-10.792 c0-1.1885-0.0332-2.2119-0.1318-2.9707l-0.1328-1.1885h2.3438l0.3965,2.2119c1.2207-1.4854,2.6074-2.6074,4.8516-2.6074 c2.6729,0,4.4883,0.8574,4.752,3.9277c0.1328,1.4844,0.0996,2.9697,0.0996,4.4551 C208.1299,17.0635,208.0635,21.5518,208.0635,21.5518z"></path><path class="dclogocol1" d="M216.5439,21.9814c-1.6836,0-3.499-0.4297-4.6543-1.2217l0.2979-2.376 c1.0889,0.6924,2.2109,1.5176,4.1582,1.5176c2.1123,0,3.1025-0.957,3.1025-2.1123c0-3.0361-7.459-2.8711-7.459-7.4912 c0-2.2451,1.749-4.0928,5.3467-4.0928c1.9805,0,3.2676,0.5605,4.291,1.1221l-0.2646,2.376 c-1.2871-1.1885-2.9375-1.4521-3.9932-1.4521c-1.6836,0-2.8389,0.6602-2.8389,1.8486c0,3.0029,7.459,2.7393,7.459,7.4922 C221.9893,19.8027,220.3389,21.9814,216.5439,21.9814z"></path><path class="dclogocol2" d="M236.4883,21.5518h-5.1738V6.4561h5.3994c5.3232,0,7.1729,4.0488,7.1729,7.498 C243.8867,17.2529,241.9873,21.5518,236.4883,21.5518z M236.3887,8.0557h-3.0996v11.8965h2.8496 c3.8242,0,5.5234-2.2246,5.5234-5.998C241.6621,11.3799,240.4629,8.0557,236.3887,8.0557z"></path><path class="dclogocol2" d="M254.5127,21.5518c-0.125-0.375-0.2246-0.75-0.2744-1.0742l-0.0752-0.4756 c-0.9248,1.4004-2.0498,1.875-3.4746,1.875c-2.7236,0-4.8486-2.0498-4.8486-5.7236c0-3.9238,1.8994-6.2236,5.4238-6.2236 c1.0244,0,2.1748,0.3252,2.8496,1.2002l0.4248-0.9004h1.499l-0.1748,1.5996v6.3486c0,0.8496,0.25,2.5742,0.5254,3.374H254.5127z M253.9385,15.2285c0-2.5244-0.9248-3.6494-2.625-3.6494c-0.8994,0-3.3994,0.5404-3.3994,4.2988c0,3.25,1.5,4.3496,3.0996,4.3496 c1.2246,0,2.1992-0.875,2.9248-2.625V15.2285z"></path><path class="dclogocol2" d="M265.2881,21.2773c-0.6748,0.2998-1.7246,0.5996-2.5986,0.5996c-1.4756,0-2.5244-0.8252-2.5244-2.8242v-7.3232 h-2.0498v-1.5h2.0498V7.2051h1.874v3.0244h2.9746v1.5h-2.9746v6.6982c0,1.2744,0.3252,1.7744,1.2002,1.7744 c0.5996,0,1.1992-0.25,1.8994-0.5244L265.2881,21.2773z"></path><path class="dclogocol2" d="M274.9375,21.5518c-0.125-0.375-0.2246-0.75-0.2744-1.0742l-0.0752-0.4756 c-0.9248,1.4004-2.0498,1.875-3.4746,1.875c-2.7236,0-4.8486-2.0498-4.8486-5.7236c0-3.9238,1.8994-6.2236,5.4238-6.2236 c1.0244,0,2.1748,0.3252,2.8496,1.2002l0.4248-0.9004h1.499l-0.1748,1.5996v6.3486c0,0.8496,0.25,2.5742,0.5254,3.374H274.9375z M274.3633,15.2285c0-2.5244-0.9248-3.6494-2.625-3.6494c-0.8994,0-3.3994,0.4298-3.3994,4.2988c0,3.25,1.5,4.3496,3.0996,4.3496 c1.2246,0,2.1992-0.875,2.9248-2.625V15.2285z"></path></svg></div><div class="links"><ul class="mdui-text-small"><li><a href="https://data.mendeley.com/">Home</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/about">About</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/accessibility">Accessibility Statement</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/archive-process">Archive Policy</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/file-formats">File Formats</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/api/docs">API Docs</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/oai?verb=Identify">OAI</a></li><li><span class="separator">|</span></li><li><a href="https://data.mendeley.com/mission">Mission</a></li></ul><ul class="mdui-text-smaller"><li><a href="https://www.mendeley.com/terms/">Terms of Use</a></li><li><span class="separator">|</span></li><li><a href="https://www.elsevier.com/legal/privacy-policy">Privacy Policy</a></li><li><span class="separator">|</span></li><li><a href="https://www.elsevier.com/legal/cookienotice">Cookie Notice</a></li></ul><ul class="copyright mdui-text-smaller"><li>Copyright © 2022 Elsevier inc.</li></ul></div></div></div></footer></div></div><script>window.INITIAL_STATE = {"customer":{"institution":null},"citations":{"data":{},"count":0,"error":false,"loading":true},"dataset":{"snapshot":{"id":"72ptz43s9v","version":1,"name":"Phishing Websites Dataset","description":"These data consist of a collection of legitimate as well as phishing website instances. Each website is represented by the set of features which denote, whether website is legitimate or not. Data can serve as an input for machine learning process.\n\nIn this repository the two variants of the Phishing Dataset are presented.\n\nFull variant - dataset_full.csv\nShort description of the full variant dataset:\nTotal number of instances: 88,647\nNumber of legitimate website instances (labeled as 0): 58,000\nNumber of phishing website instances (labeled as 1): 30,647\nTotal number of features: 111\n\nSmall variant - dataset_small.csv\nShort description of the small variant dataset:\nTotal number of instances: 58,645\nNumber of legitimate website instances (labeled as 0): 27,998\nNumber of phishing website instances (labeled as 1): 30,647\nTotal number of features: 111","method":null,"doi":"10.17632/72ptz43s9v.1","publish_date":"2020-09-24T12:25:59.692Z","embargo_date":null,"last_modification_date":"2020-09-24T10:45:27.687Z","is_confidential":false,"confidentiality_policy_id":null,"customer":{"id":"7377952c-6404-4428-bbfc-77242cfc301e","name":"Mendeley Guests"},"owner":{"id":"c80f01dc-3b98-30ba-be88-1b132e44d12f","first_name":"Grega","last_name":"Vrbančič","display_name":"Grega Vrbančič","$ref":"/profiles/c80f01dc-3b98-30ba-be88-1b132e44d12f"},"categories":[{"id":"data.elsevier.com/vocabulary/OmniScience/Concept-189720738","label":"Artificial Intelligence"},{"id":"data.elsevier.com/vocabulary/OmniScience/Concept-248827255","label":"Computer Security and Privacy"}],"licence":{"id":"01d9c749-3c4d-4431-9df3-620b2dcfe144","short_name":"CC BY 4.0","full_name":"Creative Commons Attribution 4.0 International","description":"You can share, copy and modify this dataset so long as you give appropriate credit, provide a link to the CC BY license, and indicate if changes were made, but you may not do so in a way that suggests the rights holder has endorsed you or your use of the dataset. Note that further permission may be required for any content within the dataset that is identified as belonging to a third party.","url":"http://creativecommons.org/licenses/by/4.0","category":"Creative","customer_id":null},"institutions":[],"contributors":[{"id":"c80f01dc-3b98-30ba-be88-1b132e44d12f","first_name":"Grega","last_name":"Vrbančič","display_name":"Grega Vrbančič","$ref":"/profiles/c80f01dc-3b98-30ba-be88-1b132e44d12f"}],"related_links":null,"custom_metadata":{}},"contributors":[],"doi":"","status":200,"loading":false},"profile":null,"archive":{"data":{"status":"PENDING"},"error":null,"loading":false},"environment":"live","versions":{"list":[],"loading":true},"articles":{"list":[],"loading":true},"configClient":{"environment":"live","hostname":"data.mendeley.com","rootMendeleyUrl":"https://data.mendeley.com","recaptchaV3SiteKey":"6LcEHc8ZAAAAAMenhT9jO_B-EJAoGq_v29B7HaCf","ga":{"enabled":true,"key":"UA-3874710-27"},"adobeAnalytics":{"newPage":{"page":{"businessUnit":"els:rp:st","language":"en","productName":"md","environment":"dev","noTracking":"false","sectionName":"md:data","type":"cp-ca"},"content":{"type":"md:datasets","format":"MIME-HTML"}}},"apiBaseUrl":"/api/datasets-v2","publicApiBaseUrl":"/public-api","baseUrl":"/datasets","baseAssetsUrl":"/datasets"},"files":{"list":[],"currentFile":{},"folders":[],"currentFolder":{},"filesLoading":true,"foldersLoading":true},"fileViewer":{"navigationLoaded":false,"metadataLoaded":false},"hostname":"data.mendeley.com","repository":{"repository":null,"loading":true}}
+      window.initialTime = 1646860714532</script><script src="./Phishing Websites Dataset - Mendeley Data_files/bundle.js.pobrane"></script><iframe sandbox="allow-scripts allow-same-origin" title="Adobe ID Syncing iFrame" id="destination_publishing_iframe_elsevier_0" name="destination_publishing_iframe_elsevier_0_name" src="./Phishing Websites Dataset - Mendeley Data_files/dest5.html" class="aamIframeLoaded" style="display: none; width: 0px; height: 0px;"></iframe><script src="./Phishing Websites Dataset - Mendeley Data_files/plumx-widget-summary.js.pobrane"></script><script defer="" src="./Phishing Websites Dataset - Mendeley Data_files/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon="{&quot;rayId&quot;:&quot;6e96d7fb5e1f7891&quot;,&quot;token&quot;:&quot;84e449ada9f2403eb49fdc7135afd6e1&quot;,&quot;version&quot;:&quot;2021.12.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
+<script>
+try {
+  pendoData = {
+    visitor: {},
+    account: {}
+  };
+
+  if(pageData) {
+    // visitor
+    if(pageDataTracker) {
+      pendoData.visitor.id = pageDataTracker.getVisitorId();
+    }
+    if(pageData.visitor && pageData.visitor.userId) {
+      pendoData.visitor.webuserID = pageData.visitor.userId;
+    }
+    if(pageData.visitor && pageData.visitor.accessType) {
+      pendoData.visitor.accessType = pageData.visitor.accessType;
+    }
+    if(pageData.page && pageData.page.name && pageData.page.productName) {
+      pendoData.visitor.pageName = pageData.page.productName + ':' + pageData.page.name;
+    }
+    if(pageData.page && pageData.page.type) {
+      pendoData.visitor.pageType = pageData.page.type;
+    }
+    if(pageData.page && pageData.page.productName) {
+      pendoData.visitor.pageProduct = pageData.page.productName;
+    }
+    if(pageData.page && pageData.page.language) {
+      pendoData.visitor.pageLanguage = pageData.page.language;
+    }
+    if(pageData.page && pageData.page.environment) {
+      pendoData.visitor.pageEnvironment = pageData.page.environment;
+    }
+
+    // account
+    if(pageData.visitor && pageData.visitor.accountId) {
+      pendoData.account.id = pageData.visitor.accountId;
+    }
+    if(pageData.visitor && pageData.visitor.accountName) {
+      pendoData.account.name = pageData.visitor.accountName;
+    }  
+  }
+
+  if(pendoData.visitor.id && pendoData.visitor.pageName && pendoData.visitor.pageProduct) {
+    pendo.initialize(pendoData);
+    _satellite.logger.log('pendo initialized with pageData.');
+  } else {
+    _satellite.logger.log('couldn\'t initialize pendo.');
+  }
+} catch(e){
+  _satellite.logger.log('exception during pendo init. ');
+  _satellite.logger.log(e);
+}
+
+</script><div id="forest-ext-shadow-host"></div><script>window.pageDataTracker.trackPageLoad({"page":{"name":"data:datasets:view","noTracking":"false"}}); window.pageDataTracker.disableDebug(); window.pageDataTracker.trackEvent('newPage', {"page":{"businessUnit":"els:rp:st","language":"en","productName":"md","environment":"dev","noTracking":"false","sectionName":"md:data","type":"cp-ca","loadTimestamp":1646860715919,"loadTime":1387,"name":"data:datasets:view","analyticsPagename":"md:data:datasets:view"},"visitor":{"userId":"md:guest","accessType":"md:guest"},"content":[{"type":"md:datasets","format":"MIME-HTML","id":"md:datasets:datasetid:72ptz43s9v/1","detail":"md:datasets:INSTITUTION::CATEGORY:Artificial Intelligence,Computer Security and Privacy:LICENSE:cc by 4.0"}]});</script><script>_satellite["_runScript1"](function(event, target, Promise) {
+_satellite.logger.log("eventDispatcher: clearing tracking state");try{s.events="",s.linkTrackVars="",s.linkTrackEvents=""}catch(e){_satellite.logger.log("eventDispatcher: s object - could not reset state.")}try{dispatcherData=JSON.parse(event.detail),window.eventData=dispatcherData.eventData,window.pageData=dispatcherData.pageData,_satellite.track(dispatcherData.eventName)}catch(e){_satellite.logger.log("eventDispatcher: exception"),_satellite.logger.log(e)}
+});</script><script>_satellite["_runScript2"](function(event, target, Promise) {
+_satellite.logger.log("eventDispatcher: clearing tracking state");try{s.events="",s.linkTrackVars="",s.linkTrackEvents=""}catch(e){_satellite.logger.log("eventDispatcher: s object - could not reset state.")}try{dispatcherData=JSON.parse(event.detail),window.eventData=dispatcherData.eventData,window.pageData=dispatcherData.pageData,_satellite.track(dispatcherData.eventName)}catch(e){_satellite.logger.log("eventDispatcher: exception"),_satellite.logger.log(e)}
+});</script><script>_satellite["_runScript3"](function(event, target, Promise) {
+_satellite.logger.log("eventDispatcher: clearing tracking state");try{s.events="",s.linkTrackVars="",s.linkTrackEvents=""}catch(e){_satellite.logger.log("eventDispatcher: s object - could not reset state.")}try{dispatcherData=JSON.parse(event.detail),window.eventData=dispatcherData.eventData,window.pageData=dispatcherData.pageData,_satellite.track(dispatcherData.eventName)}catch(e){_satellite.logger.log("eventDispatcher: exception"),_satellite.logger.log(e)}
+});</script></body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

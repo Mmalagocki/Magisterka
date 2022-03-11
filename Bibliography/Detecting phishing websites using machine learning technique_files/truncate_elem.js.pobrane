@@ -1,0 +1,1 @@
+!function(e){truncate_elem={remove_overflowed:function(i){var t,o,n,r;o=e(i),n=[],t=e(o[0]).offset().top,o.children().each((function(){if(e(this).offset().top>t)return n.push(this),e(this).addClass("remove")})),r=n[0],e(r).prev().append("&hellip;"),e(".remove").css("visibility","hidden")}}}(jQuery);
