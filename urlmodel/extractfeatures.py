@@ -4,6 +4,7 @@ import socket
 import urllib.request
 import ssl
 import whois
+import requests
 from datetime import date, datetime, timedelta
 
 
@@ -100,7 +101,6 @@ class ExtractFeatues:
         stop = url.find('/', name + 1)
         numberofsubdomains = 0
         start = name + 1
-        lastdot = 0
 
         for j in range(stop):
             if url.find('.', start):
@@ -114,12 +114,11 @@ class ExtractFeatues:
         return i + 1
 
     def checkcertificate(self, i, url):
-        url = url.split("//", 1)
-        cert = ssl.get_server_certificate((url[1], 443))
-        print(cert)
+        response = requests.get(url, verify = True)
+        if response.status_code != 200:
+            self.features[i] = 1
 
-        exit()
-
+        return i + 1
 
     def checkregistrationdate(self, i , url):
         w = whois.whois('webscraping.com')
@@ -134,4 +133,4 @@ class ExtractFeatues:
 
 
 
-ExtractFeatues('https://www.youtube.com', 9, 's')
+ExtractFeatues('http://localhost/phpmyadmin/', 9, 's')
