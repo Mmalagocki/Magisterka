@@ -12,6 +12,7 @@ class Train:
         self.K_FOLDS = 11
         self.TRAINING_EPOCHS = 1000
         self.TRAINING_LEARNING_RATE = 0.01
+        self.EPSYLON = 0.001
 
         self.CROSS_VALIDATION_EPOCHS = 250
         self.CROSS_VALIDATION_LEARNING_RATE = 0.1
@@ -34,26 +35,37 @@ class Train:
         self.train()
 
 
-    def calculate(self, row, coef):
-        y = coef[0]
+    def normalize(self, train_target):
+        for i in range(len(train_target)):
+            N = len(train_target[i])
+            for j in range(N):
+                train_target[i][j] = train_target[i][j] / N
 
+        return train_target
+
+
+    def calculate(self, row, coef):
+        y = 0
         for i in range(len(row) - 1):
-            y += coef[i + 1] * row[i]
+            y += coef[i] * row[i]
 
         return y
 
 
     def get_weights(self, inputs, expected, weights, learning_rate):
+        print(weights)
         for i in range(len(inputs)):
             row = inputs[i]
             y = expected[i]
-
             prediction = self.calculate(row, weights)
+            # Nie możemy przyjmować 1 i -1 jako rozwiązania
+            # Przykładowe rozwiązanie powinno wynosić np 32 i powinno mieć ostateczną etykietę -1
+            # Trzeba wprowadzić normalizację z zakresu 0,1. Przy czym rozpatrywać będzięmy wartości -1,1 gdzie im bliżej -1 tym strona bardziej legitna a im bliżej 1 tym mniej
             error = prediction - y
             weights[0] = weights[0] - learning_rate * error * 1
 
-            for i in range(len(row) - 1):
-                weights[i + 1] = weights[i + 1] - learning_rate * error * row[i]
+            for j in range(len(row)):
+                weights[j] = weights[j] - learning_rate * error * row[j]
 
         return weights
 
@@ -85,8 +97,10 @@ class Train:
         for j in validation_set.copy():
             validate_target_output.append(j[-1])
             validate_target.append(j[:-1])
+        
+        train_target = self.normalize(train_target)
 
-        weights = [random.uniform(-1, 1) for i in range(len(training_set[0]) + 1)]
+        weights = [random.uniform(-1, 1) for i in range(len(train_target[0]))]
 
         error_counter = 0
         last_validate_error = None
@@ -94,7 +108,6 @@ class Train:
         best_weights = weights
 
         for epoch in range(CROSS_VALIDATION_EPOCHS):
+            print('Epoch %s/%d'% (epoch,CROSS_VALIDATION_EPOCHS))
             weights = self.get_weights(train_target, train_target_output, weights, CROSS_VALIDATION_LEARNING_RATE)
-        print(weights)
-        exit()
 
