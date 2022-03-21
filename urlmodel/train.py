@@ -1,4 +1,9 @@
+from email import iterators
+from pickle import bytes_types
 import random
+import re
+
+from urllib3 import Retry
 
 class Train:
 
@@ -20,19 +25,7 @@ class Train:
         self.training()
 
 
-    def training(self):
-        self.folding()
 
-        for fold in self.trainsetfolded:
-            training_set = self.trainsetfolded.copy()
-            training_set.remove(fold)
-            training_set = sum(training_set, [])
-            validation_set = list(fold.copy())
-
-            fold_error, weights = self.train(training_set, validation_set, self.CROSS_VALIDATION_LEARNING_RATE, self.CROSS_VALIDATION_EPOCHS)
-            error += fold_error
-
-        self.train()
 
 
     def normalize(self, train_target):
@@ -53,7 +46,6 @@ class Train:
 
 
     def get_weights(self, inputs, expected, weights, learning_rate):
-        print(weights)
         for i in range(len(inputs)):
             row = inputs[i]
             y = expected[i]
@@ -85,6 +77,49 @@ class Train:
         self.trainsetfolded = folds
 
 
+    def validate(self, inputs, expected, coef):
+        summation = 0
+
+        for i in range(len(inputs)):
+            row = inputs[i]
+            exp = expected[i]
+            prediction = self.calculate(row, coef)
+            summation = summation + pow(exp - prediction, 2)
+
+        mse = summation / len(inputs)
+
+        return mse
+
+
+    def training(self):
+        self.folding()
+        iterations = 0
+        best_validate_error = None
+        best_weights = None
+
+        for fold in self.trainsetfolded:
+            training_set = self.trainsetfolded.copy()
+            training_set.remove(fold)
+            training_set = sum(training_set, [])
+            validation_set = list(fold.copy())
+
+            fold_error, weights = self.train(training_set, validation_set, self.CROSS_VALIDATION_LEARNING_RATE, self.CROSS_VALIDATION_EPOCHS)
+
+            if best_validate_error is None or best_validate_error > fold_error:
+                best_validate_error = fold_error
+                best_weights = weights
+                iterations = 0
+            else: 
+                iterations += 1
+
+            if iterations > 100:
+                return best_weights
+
+        
+        return best_weights
+
+
+
     def train(self, training_set, validation_set, CROSS_VALIDATION_LEARNING_RATE, CROSS_VALIDATION_EPOCHS):
         train_target = []
         train_target_output = []
@@ -102,12 +137,11 @@ class Train:
 
         weights = [random.uniform(-1, 1) for i in range(len(train_target[0]))]
 
-        error_counter = 0
-        last_validate_error = None
-        best_validate_error = 0
-        best_weights = weights
-
         for epoch in range(CROSS_VALIDATION_EPOCHS):
-            print('Epoch %s/%d'% (epoch,CROSS_VALIDATION_EPOCHS))
+            print('Epoch %s/%d'% (epoch + 1,CROSS_VALIDATION_EPOCHS))
             weights = self.get_weights(train_target, train_target_output, weights, CROSS_VALIDATION_LEARNING_RATE)
+
+        mse = self.validate(validate_target, validate_target_output, weights)
+
+        return mse, weights
 
