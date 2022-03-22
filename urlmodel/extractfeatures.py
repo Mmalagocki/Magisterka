@@ -94,7 +94,8 @@ class ExtractFeatues:
             self.features[i] = 1
 
         return i + 1
-    
+
+
     def checksubdomains(self, i, url):
         wwwpos = url.find('www.')
         name = url.find('.', wwwpos + 4)
@@ -113,15 +114,20 @@ class ExtractFeatues:
 
         return i + 1
 
+
     def checkcertificate(self, i, url):
-        response = requests.get(url, verify = True)
-        if response.status_code != 200:
+        try:
+            response = requests.get(url, verify = True)
+            if response.status_code != 200:
+                self.features[i] = 1
+        except:
             self.features[i] = 1
 
         return i + 1
 
+
     def checkregistrationdate(self, i , url):
-        w = whois.whois('webscraping.com')
+        w = whois.whois(url)
         today = date.today().strftime("%Y-%m-%d %H:%M:%S")
         date_today_obj = datetime.strptime(today, "%Y-%m-%d %H:%M:%S")
         difference = date_today_obj - w.creation_date
@@ -132,5 +138,34 @@ class ExtractFeatues:
         return i + 1
 
 
+    def faviconsource(self, i, url):
+        #Work in proggress
+        exit()
 
-ExtractFeatues('http://localhost/phpmyadmin/', 9, 's')
+
+    def nonStandardPort(self, i, url):
+        sus_ports = [21, 22, 23, 80, 445, 1433, 1521, 3306, 3389]
+        ports = [80, 443]
+        final_est = 0
+
+        for port in ports:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                s.connect((url, int(port)))
+                s.shutdown(2)
+            except:
+                final_est += 0.5
+
+        for sus_port in sus_ports:
+            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            try:
+                s.connect((url, int(sus_port)))
+                s.shutdown(2)
+                final_est += 0.5
+            except:
+                continue
+
+        self.features[i] = final_est
+        return i + 1
+
+ExtractFeatues('https://expired.badssl.com/', 9, 's')

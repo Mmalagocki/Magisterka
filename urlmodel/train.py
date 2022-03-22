@@ -26,8 +26,6 @@ class Train:
 
 
 
-
-
     def normalize(self, train_target):
         for i in range(len(train_target)):
             N = len(train_target[i])
@@ -125,14 +123,14 @@ class Train:
         train_target_output = []
         validate_target = []
         validate_target_output = []
-        
+
         for j in training_set.copy():
             train_target_output.append(j[-1])
             train_target.append(j[:-1])
         for j in validation_set.copy():
             validate_target_output.append(j[-1])
             validate_target.append(j[:-1])
-        
+
         train_target = self.normalize(train_target)
 
         weights = [random.uniform(-1, 1) for i in range(len(train_target[0]))]
