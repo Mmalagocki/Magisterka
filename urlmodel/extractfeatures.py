@@ -32,6 +32,8 @@ class ExtractFeatues:
         i = self.checksubdomains(i, urlcopy)
         i = self.checkcertificate(i, urlcopy)
         i = self.checkregistrationdate(i, urlcopy)
+        i = self.nonStandardPort(i, urlcopy)
+        i = self.httpsInsidename(i, urlcopy)
 
         #Na sam koniec musi być walidacja czy link pshishingowy czy nie 
         print(self.features)
@@ -168,4 +170,18 @@ class ExtractFeatues:
         self.features[i] = final_est
         return i + 1
 
-ExtractFeatues('https://expired.badssl.com/', 9, 's')
+
+    def httpsInsidename(self, i, url):
+        start = url.find('//')
+        stop = url.find('https', start + 2)
+
+        if stop != -1:
+            self.features[i] = 1
+        
+        return i + 1
+
+
+    def externalSourceContent(self, i, url):
+        print('Hello')
+
+ExtractFeatues('https://expired.badssl.com/', 30, 's')
