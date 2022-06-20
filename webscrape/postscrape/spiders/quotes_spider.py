@@ -1,26 +1,17 @@
-import scrapy
+from scrapy.spiders import CrawlSpider, Rule
+from scrapy.linkextractors import LinkExtractor
 
-# scrapy crawl 'name of spider' for example
-# scrapy crawl quotes
-# for this file
-class QuotesSpider(scrapy.Spider):
-    name = "quotes"
-
-
-    def start_requests(self):
-        urls = [
-            'https://quotes.toscrape.com/page/1/',
-            'https://quotes.toscrape.com/page/2/',
-        ]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
-
-
-    def parse(self, response):
-        page = response.url.split("/")[-2]
-        filename = f'quotes-{page}.html'
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-        self.log(f'Saved file {filename}')
-
-
+class SuperSpider(CrawlSpider):
+    name = 'spider'
+    allowed_domains = ['quotes.toscrape.com']
+    start_urls = ['http://quotes.toscrape.com/']
+    base_url = 'http://quotes.toscrape.com'
+    rules = [Rule(LinkExtractor(allow = '/'),
+                  callback='parse_filter_book', follow=True)]
+ 
+    def parse_filter_book(self, response):
+        for quote in response.css('div.quote'):
+            yield {
+                'Link_without_base_url': quote.xpath('.//span/a/@href').get(),
+                'Text': quote.xpath('.//span[@class= "text"]/text()').get(),
+                }
