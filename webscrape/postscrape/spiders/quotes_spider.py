@@ -17,8 +17,13 @@ class SuperSpider(CrawlSpider):
                   callback='parse', follow=True)]
 
     def parse(self, response):
+        url_list = []
         for quote in response.css('div'):
+            name =  quote.xpath('.//a/@href').get()
+            if name in url_list:
+                continue
+            url_list.append(name)
             yield {
                 'Link_without_base_url': quote.xpath('.//a/@href').get(),
                 'Text':  response.css("::text").extract(),
-                }
+            }
