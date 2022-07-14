@@ -1,11 +1,13 @@
 import csv
 import pandas as pd
 from train import Train
-from sklearn.linear_model import LinearRegression
+from sklearn import linear_model
 import pickle
 import os
 import json
 from extractfeatures import ExtractFeatues 
+from sklearn.metrics import mean_absolute_error,r2_score,mean_squared_error
+import numpy as np
 
 class UrlModel:
 
@@ -13,7 +15,6 @@ class UrlModel:
     def __init__(self):
         print('Hello from urlmodel')
         self.model_file_name = 'finalized_model.sav'
-        self.main()
 
 
     def main(self):
@@ -42,16 +43,29 @@ class UrlModel:
 
 
     def train(self):
-        trainset = pd.read_csv ('../urlmodel/datasets/basic.csv')
-        trainset = trainset.set_index('id')
+        dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
+        dataset = dataset.set_index('id')
+        trainset = dataset.sample(frac=0.8, random_state=700)
+        test = dataset.drop(trainset.index)
         X = trainset.iloc[: , :-1]
         Y = trainset.iloc[: , -1]
-        model = LinearRegression()
-        print('to shape')
-        print(trainset.shape)
+        Test_X = test.iloc[: , :-1]
+        true_Y = test.iloc[: , -1]
+        # print(len(true_Y))
+        # print(len(Test_X))
+        # exit()
+        model = linear_model.Lasso(alpha=0.6)
+        # print('to shape')
+        # print(trainset.shape)
         model.fit(X, Y)
+        pred_y = model.predict(Test_X)
+        print("R^2 : ", r2_score(true_Y, pred_y))
+        print("MAE :", mean_absolute_error(true_Y,pred_y))
+        print("RMSE:",np.sqrt(mean_squared_error(true_Y, pred_y)))
+        exit()
         # print(model.score(X, Y))
         # print(model.coef_)
+
         filename = 'finalized_model.sav'
         pickle.dump(model, open(filename, 'wb'))
 

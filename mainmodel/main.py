@@ -17,6 +17,8 @@ def main():
     # process.start()
     df = pd.read_json (r'C:\Users\BeLia\OneDrive\Dokumenty\Studia\Magisterka\webscrape\postscrape\spiders\result.json')
     x = UrlModel()
+    x.train()
+    exit()
     x.test(df)
 
 if __name__ == '__main__':
