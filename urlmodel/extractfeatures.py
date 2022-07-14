@@ -150,7 +150,7 @@ class ExtractFeatues:
         i = self.StatisticalReportsBased(i, urlcopy)
 
         #Na sam koniec musi być walidacja czy link pshishingowy czy nie 
-        # print(self.features)
+        print(self.features)
         return self.features
 
 
@@ -531,13 +531,13 @@ class ExtractFeatues:
 
 
     def CheckPopup(self, i, url):
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        options = webdriver.ChromeOptions()
+        options.add_argument("--ignore-certificate-errors");
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
+        driver.get("http://www.google.com/")
         driver.get(url)
         elements = driver.find_elements(By.TAG_NAME, "div")
-        # elements = driver.find_elements(By.CSS_SELECTOR, '[class="KxvlWc"]')
-        # print(elements)
-        # exit()
-        time.sleep(10)
+        time.sleep(5)
 
         new_elements = driver.find_elements(By.TAG_NAME, "div")
         if elements != new_elements:
@@ -550,35 +550,10 @@ class ExtractFeatues:
         return i + 1
 
 
-
-        # time.sleep(10)
-        # driver.find_element_by_xpath('//form').click()
-        # print('To są wszystkie')
-        # print(driver.window_handles)
-        # for handle in driver.window_handles:
-        #     if handle != main_page:
-        #         print(handle)
-        #         login_page = handle
-
-        # driver.maximize_window()
-        # driver.implicitly_wait(30)
-        # driver.get('http://www.google.com/')
-        # time.sleep(10) # None of the below method works if this is removed.
-        # wait = WebDriverWait(driver,30)
-
-        # driver.switch_to.frame(driver.find_element("name", "ml-webforms-popup-2207054"))
-        # # First:
-        # closepopup = driver.find_element_by_xpath("//form")
-        # print(closepopup.get_attribute("class"))
-        # closepopup.click()
-
-        time.sleep(5) # Let the user actually see something!
-
-        driver.quit()
-
-
     def CheckIFrameRedirection(self, i, url):
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        options = webdriver.ChromeOptions()
+        options.add_argument("--ignore-certificate-errors");
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
         driver.get(url)
         elements = driver.find_elements(By.TAG_NAME, "iframe")
         if not elements:
@@ -602,12 +577,6 @@ class ExtractFeatues:
 
 
     def CheckDNSRecord(self, i, url):
-        # url = 'youtube.com'
-        # domain = 'google.com'
-        # nameservers = dns.resolver.query('stackoverflow.com','NS')
-        # for data in nameservers :
-        #     print (data)
-        # exit()
         try:
             answers = dns.resolver.resolve(url,'NS')
             if answers:
@@ -630,7 +599,7 @@ class ExtractFeatues:
             site_name = url[urln_start+4:url_stop+4]
 
         response = self.getReponseGoogle(site_name)
-        with open('data.json') as json_file:
+        with open('my_data.json') as json_file:
             dict = json.load(json_file)
             df = pd.DataFrame(dict['tasks'])
         ranking = pd.DataFrame(df['result'][0])
@@ -656,7 +625,7 @@ class ExtractFeatues:
             site_name = url[urln_start+4:url_stop+4]
 
         response = self.getReponseGoogle(site_name)
-        with open('data.json') as json_file:
+        with open('my_data.json') as json_file:
             dict = json.load(json_file)
             df = pd.DataFrame(dict['tasks'])
         ranking = pd.DataFrame(df['result'][0])
@@ -678,7 +647,8 @@ class ExtractFeatues:
         link_to_analyze = 'site:' + url
 
         result = adv.serp_goog(cx=cx, key=key, q=link_to_analyze)
-        if result['rank']:
+
+        if 'rank' in result:
             rank = str(result['rank'][0])
             if rank == 'nan':
                 self.features[i] = 1
@@ -724,5 +694,5 @@ class ExtractFeatues:
 
 ######################################################
 object = ExtractFeatues(30)
-object.checkFeatures('https://expired.badssl.com/')
-# object.checkFeatures('http://quotes.toscrape.com')
+# object.checkFeatures('https://expired.badssl.com/')
+object.checkFeatures('https://bt-email-log-in.weeblysite.com/')
