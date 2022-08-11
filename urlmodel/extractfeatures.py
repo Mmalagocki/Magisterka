@@ -83,6 +83,8 @@ class ExtractFeatues:
 
 
     def getBaseUrl(self, url):
+            if url is None:
+                return 'Wrong'
             urln_start = url.find('//')
             url_stop = url.find('/', urln_start + 2)
             desired_url = url[0:url_stop]
@@ -185,7 +187,11 @@ class ExtractFeatues:
         ctx = ssl.create_default_context()
         ctx.check_hostname = False
         ctx.verify_mode = ssl.CERT_NONE
-        resp = urllib.request.urlopen(url, context=ctx)
+
+        # resp = urllib.request.urlopen(url, context=ctx)
+        req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
+        con = urllib2.urlopen(req, context=ctx)
+        resp = con.url
 
         if resp != url:
             # self.checkFeatures(resp.url)
@@ -195,14 +201,15 @@ class ExtractFeatues:
 
 
     def checkat(self, i, url):
-        if url.find('@') != 1:
+        if url.find('@') != -1:
             self.features[i] = 1
 
         return i + 1
 
 
     def checkredirection(self, i, url):
-        if url.find('//', 7):
+        first = url.find('//', 0)
+        if url.find('//', first + 2) != -1:
             self.features[i] = 1
 
         return i + 1
@@ -211,7 +218,7 @@ class ExtractFeatues:
         start = url.find('//')
         stop = url.find('/', start + 2)
 
-        if url.find('-', start, stop):
+        if url.find('-', start, stop) != -1:
             self.features[i] = 1
 
         return i + 1
@@ -251,7 +258,7 @@ class ExtractFeatues:
         w = whois.whois(url)
         today = date.today().strftime("%Y-%m-%d %H:%M:%S")
         date_today_obj = datetime.strptime(today, "%Y-%m-%d %H:%M:%S")
-        difference = date_today_obj - w.creation_date
+        difference = date_today_obj - w.creation_date[0]
 
         if difference < timedelta(days=365):
             self.features[i] = 1
@@ -335,10 +342,12 @@ class ExtractFeatues:
 
         images = self.getContentFromPage('img', 'src', url)
         base_url = self.getBaseUrl(url)
-        number_of_links = 0
+        number_of_links = len(images)
         external_links = 0
         if images:
             for img in images:
+                if str(img) == False:
+                    continue
                 base_img_url = self.getBaseUrl(img)
                 if base_url != base_img_url:
                     external_links += 1
@@ -371,6 +380,8 @@ class ExtractFeatues:
 
         if links:
             for img in links:
+                if str(img) == False:
+                    continue
                 base_img_url = self.getBaseUrl(img)
                 if base_url != base_img_url:
                     external_links += 1
@@ -434,6 +445,8 @@ class ExtractFeatues:
 
         if forms != None:
             for form in forms:
+                if str(form) == False:
+                    continue
                 base_action_url = self.getBaseUrl(form)
                 if base_url == base_action_url:
                     self.features[i] = 0
@@ -444,7 +457,7 @@ class ExtractFeatues:
 
     def CheckIfMailing(self, i, url):
         forms = self.getContentFromPage('form', 'action', url)
-        if forms:
+        if forms[0] is not None:
             if forms[0].find('mailto:'):
                 self.features[i] = 1
             else:
@@ -533,18 +546,16 @@ class ExtractFeatues:
     def CheckPopup(self, i, url):
         options = webdriver.ChromeOptions()
         options.add_argument("--ignore-certificate-errors");
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
-        driver.get("http://www.google.com/")
+        driver = webdriver.Chrome(chrome_options=options)
+        # driver.get("http://www.google.com/")
         driver.get(url)
         elements = driver.find_elements(By.TAG_NAME, "div")
         time.sleep(5)
 
         new_elements = driver.find_elements(By.TAG_NAME, "div")
         if elements != new_elements:
-            print('Smth new')
             self.features[i] = 1
         else:
-            print('Nothing new')
             self.features[i] = 0
 
         return i + 1
@@ -553,7 +564,7 @@ class ExtractFeatues:
     def CheckIFrameRedirection(self, i, url):
         options = webdriver.ChromeOptions()
         options.add_argument("--ignore-certificate-errors");
-        driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), chrome_options=options)
+        driver = webdriver.Chrome(chrome_options=options)
         driver.get(url)
         elements = driver.find_elements(By.TAG_NAME, "iframe")
         if not elements:
@@ -568,7 +579,7 @@ class ExtractFeatues:
         w = whois.whois(url)
         now = datetime.now()
 
-        if w.creation_date < now + timedelta(days=-183):
+        if w.creation_date[0] < now + timedelta(days=-183):
             self.features[i] = 0
         else:
             self.features[i] = 1
@@ -599,7 +610,7 @@ class ExtractFeatues:
             site_name = url[urln_start+4:url_stop+4]
 
         response = self.getReponseGoogle(site_name)
-        with open('my_data.json') as json_file:
+        with open('yt_data.json') as json_file:
             dict = json.load(json_file)
             df = pd.DataFrame(dict['tasks'])
         ranking = pd.DataFrame(df['result'][0])
@@ -625,7 +636,7 @@ class ExtractFeatues:
             site_name = url[urln_start+4:url_stop+4]
 
         response = self.getReponseGoogle(site_name)
-        with open('my_data.json') as json_file:
+        with open('yt_data.json') as json_file:
             dict = json.load(json_file)
             df = pd.DataFrame(dict['tasks'])
         ranking = pd.DataFrame(df['result'][0])
@@ -667,6 +678,8 @@ class ExtractFeatues:
 
         if links:
             for img in links:
+                if str(img) == False:
+                    continue
                 base_img_url = self.getBaseUrl(img)
                 if base_url != base_img_url:
                     external_links += 1
@@ -695,4 +708,4 @@ class ExtractFeatues:
 ######################################################
 object = ExtractFeatues(30)
 # object.checkFeatures('https://expired.badssl.com/')
-object.checkFeatures('https://bt-email-log-in.weeblysite.com/')
+# object.checkFeatures('http://zthplanet.com/zimbra/')

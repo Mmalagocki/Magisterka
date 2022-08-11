@@ -1,4 +1,5 @@
 import csv
+from hashlib import new
 import pandas as pd
 from train import Train
 from sklearn import linear_model
@@ -13,7 +14,6 @@ class UrlModel:
 
 
     def __init__(self):
-        print('Hello from urlmodel')
         self.model_file_name = 'finalized_model.sav'
 
 
@@ -59,10 +59,6 @@ class UrlModel:
         # print(trainset.shape)
         model.fit(X, Y)
         pred_y = model.predict(Test_X)
-        print("R^2 : ", r2_score(true_Y, pred_y))
-        print("MAE :", mean_absolute_error(true_Y,pred_y))
-        print("RMSE:",np.sqrt(mean_squared_error(true_Y, pred_y)))
-        exit()
         # print(model.score(X, Y))
         # print(model.coef_)
 
@@ -71,7 +67,10 @@ class UrlModel:
 
 
     def preprocess_data(self,df):
-        df.drop_duplicates(subset=['Link_without_base_url'], inplace=True)
+        df.drop_duplicates(subset=['examined_page'], inplace=True)
+
+        df = df[df.examined_page.str.contains('http')]
+
         return df
 
 
@@ -83,10 +82,12 @@ class UrlModel:
 
         extracted_features = []
         i = 0
-        for row in data_to_test['Link_without_base_url']:
+        for row in data_to_test['examined_page']:
             i += 1
             print('Link {}/{} is being processed'.format(i, len(data_to_test)))
             extracted = ExtractFeatues()
             extracted_features.append(extracted.checkFeatures(row))
+            if i > 9:
+                break
         results = model.predict(extracted_features)
         print(results)

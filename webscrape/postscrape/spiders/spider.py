@@ -5,9 +5,9 @@ from scrapy.shell import inspect_response
 
 class SuperSpider(CrawlSpider):
     name = 'spider'
-    allowed_domains = ['quotes.toscrape.com']
-    start_urls = ['http://quotes.toscrape.com/']
-    base_url = 'http://quotes.toscrape.com'
+    allowed_domains = ['zthplanet.com']
+    start_urls = ['http://zthplanet.com/']
+    base_url = 'http://zthplanet.com'
 
     # allowed_domains = ['https://webscraper.io/test-sites/e-commerce/allinone']
     # start_urls = ['https://webscraper.io/test-sites/e-commerce/allinone']
@@ -19,12 +19,11 @@ class SuperSpider(CrawlSpider):
     def parse(self, response):
         url_list = []
         for quote in response.css('div'):
-            name =  quote.xpath('.//a/@href').get()
-            if name in url_list:
-                continue
-            url_list.append(name)
-            yield {
-                'examined page': name,
-                'Link_without_base_url': 'http://quotes.toscrape.com' + quote.xpath('.//a/@href').get(),
-                'Text':  response.css("::text").extract(),
-            }
+            names =  quote.xpath('.//a/@href').getall()
+            for name in names:
+                if name in url_list:
+                    continue
+                url_list.append(name)
+                yield {
+                    'examined page': name,
+                }
