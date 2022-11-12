@@ -1,14 +1,23 @@
 import csv
-from hashlib import new
-import pandas as pd
-from train import Train
-from sklearn import linear_model
-import pickle
-import os
 import json
-from extractfeatures import ExtractFeatues 
-from sklearn.metrics import mean_absolute_error,r2_score,mean_squared_error
+import os
+import pickle
+from hashlib import new
+
 import numpy as np
+import pandas as pd
+from extractfeatures import ExtractFeatues
+from sklearn import linear_model
+from sklearn.metrics import (accuracy_score, mean_absolute_error,
+                             mean_squared_error, r2_score)
+from train import Train
+
+from sklearn import decomposition, datasets
+from sklearn import linear_model
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import GridSearchCV, cross_val_score
+from sklearn.preprocessing import StandardScaler
+
 
 class UrlModel:
 
@@ -19,18 +28,6 @@ class UrlModel:
 
     def main(self):
         model = self.read_pickle()
-        if model == 0:
-            trainset = pd.read_csv ('../urlmodel/datasets/basic.csv')
-            trainset = trainset.set_index('id')
-            X = trainset.iloc[: , :-1]
-            Y = trainset.iloc[: , -1]
-            model = LinearRegression()
-            model.fit(X, Y)
-            # print(model.score(X, Y))
-            # print(model.coef_)
-            filename = 'finalized_model.sav'
-            pickle.dump(model, open(filename, 'wb'))
-
 
     def read_pickle(self):
         if os.path.isfile(self.model_file_name):
@@ -45,21 +42,35 @@ class UrlModel:
     def train(self):
         dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
         dataset = dataset.set_index('id')
-        trainset = dataset.sample(frac=0.8, random_state=700)
+        trainset = dataset.sample(frac=0.9, random_state=700)
+        pca = decomposition.PCA()
+        stc_slc = StandardScaler()
+
         test = dataset.drop(trainset.index)
-        X = trainset.iloc[: , :-1]
-        Y = trainset.iloc[: , -1]
-        Test_X = test.iloc[: , :-1]
-        true_Y = test.iloc[: , -1]
-        # print(len(true_Y))
-        # print(len(Test_X))
-        # exit()
-        model = linear_model.Lasso(alpha=0.6)
-        # print('to shape')
-        # print(trainset.shape)
-        model.fit(X, Y)
-        pred_y = model.predict(Test_X)
-        # print(model.score(X, Y))
+        X_train = trainset.iloc[: , :-1]
+        Y_train = trainset.iloc[: , -1]
+        X_test = test.iloc[: , :-1]
+        Y_test = test.iloc[: , -1]
+        elasticnet = linear_model.ElasticNet()
+        pipe = Pipeline(steps=[('stc_slc', stc_slc),
+                           ('pca', pca),
+                           ('elasticnet', elasticnet)])
+        n_components = list(range(1,X_train.shape[1]+1,1))
+
+        normalize = [True, False]
+        selection = ['cyclic', 'random']
+        parameters = dict(pca__n_components=n_components,
+                      elasticnet__normalize=normalize,
+                      elasticnet__selection=selection)
+
+        clf_EN = GridSearchCV(pipe, parameters)
+        clf_EN.fit(X_train, Y_train)
+        print('Best Number Of Components:', clf_EN.best_estimator_.get_params()['pca__n_components'])
+        print(clf_EN.best_estimator_.get_params()['elasticnet'])
+        exit()
+        # pred_y = model.predict(X_test)
+        # y_test = Y_test.to_numpy()
+        print(model.score(X_test, Y_test))
         # print(model.coef_)
 
         filename = 'finalized_model.sav'
@@ -73,8 +84,7 @@ class UrlModel:
 
         return df
 
-
-    def test(self, data_to_test):
+    def verify(self, data_to_test):
         model = self.read_pickle()
         if model == 0:
             self.train()
