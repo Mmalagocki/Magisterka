@@ -3,6 +3,9 @@ import json
 import os
 import pickle
 from hashlib import new
+from tensorflow.keras import models, layers, utils, backend as K
+import matplotlib.pyplot as plt
+import shap
 
 import numpy as np
 import pandas as pd
@@ -18,6 +21,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import GridSearchCV, cross_val_score
 from sklearn.preprocessing import StandardScaler
 
+import os; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
 class UrlModel:
 
@@ -39,43 +43,67 @@ class UrlModel:
         return 0
 
 
+    # define metrics
+    def Recall(self, y_true, y_pred):
+        true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+        recall = true_positives / (possible_positives + K.epsilon())
+        return recall
+
+    def Precision(self, y_true, y_pred):
+        true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+        precision = true_positives / (predicted_positives + K.epsilon())
+        return precision
+
+    def F1(self, y_true, y_pred):
+        precision = self.Precision(y_true, y_pred)
+        recall = self.Recall(y_true, y_pred)
+        return 2*((precision*recall)/(precision+recall+K.epsilon()))
+
     def train(self):
         dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
         dataset = dataset.set_index('id')
         trainset = dataset.sample(frac=0.9, random_state=700)
-        pca = decomposition.PCA()
-        stc_slc = StandardScaler()
-
+        model = self.create_model(trainset.shape[1])
+        # model.summary()
+        model.compile(optimizer='adam', loss='binary_crossentropy', 
+              metrics=['accuracy',self.F1])
         test = dataset.drop(trainset.index)
         X_train = trainset.iloc[: , :-1]
         Y_train = trainset.iloc[: , -1]
         X_test = test.iloc[: , :-1]
         Y_test = test.iloc[: , -1]
-        elasticnet = linear_model.ElasticNet()
-        pipe = Pipeline(steps=[('stc_slc', stc_slc),
-                           ('pca', pca),
-                           ('elasticnet', elasticnet)])
-        n_components = list(range(1,X_train.shape[1]+1,1))
-
-        normalize = [True, False]
-        selection = ['cyclic', 'random']
-        parameters = dict(pca__n_components=n_components,
-                      elasticnet__normalize=normalize,
-                      elasticnet__selection=selection)
-
-        clf_EN = GridSearchCV(pipe, parameters)
-        clf_EN.fit(X_train, Y_train)
-        print('Best Number Of Components:', clf_EN.best_estimator_.get_params()['pca__n_components'])
-        print(clf_EN.best_estimator_.get_params()['elasticnet'])
+        training = model.fit(x=X_train, y=Y_train, batch_size=32, epochs=100, shuffle=True, verbose=2, validation_split=0.3)
+        print("finished")
+        # plot
+        metrics = [k for k in training.history.keys() if ("loss" not in k) and ("val" not in k)]    
+        fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(15,3))
         exit()
-        # pred_y = model.predict(X_test)
-        # y_test = Y_test.to_numpy()
-        print(model.score(X_test, Y_test))
-        # print(model.coef_)
+        ## training    
+        ax[0].set(title="Training")    
+        ax11 = ax[0].twinx()    
+        ax[0].plot(training.history['loss'], color='black')    
+        ax[0].set_xlabel('Epochs')    
+        ax[0].set_ylabel('Loss', color='black')    
+        for metric in metrics:        
+            ax11.plot(training.history[metric], label=metric)   
+            ax11.set_ylabel("Score", color='steelblue')    
+        ax11.legend()
+                
+        ## validation    
+        ax[1].set(title="Validation")    
+        ax22 = ax[1].twinx()    
+        ax[1].plot(training.history['val_loss'], color='black')    
+        ax[1].set_xlabel('Epochs')    
+        ax[1].set_ylabel('Loss', color='black')    
+        for metric in metrics:          
+            ax22.plot(training.history['val_'+metric], label=metric)    
+            ax22.set_ylabel("Score", color="steelblue")    
+        plt.show()
 
         filename = 'finalized_model.sav'
-        pickle.dump(model, open(filename, 'wb'))
-
+        # pickle.dump(model, open(filename, 'wb'))
 
     def preprocess_data(self,df):
         df.drop_duplicates(subset=['examined_page'], inplace=True)
@@ -83,6 +111,26 @@ class UrlModel:
         df = df[df.examined_page.str.contains('http')]
 
         return df
+
+    def create_model(self, n_features):
+        model = models.Sequential(name="DeepNN", layers=[
+            ### hidden layer 1
+            layers.Dense(name="input", input_dim=n_features-1,
+                        units=int(round((n_features+1)/2)), 
+                        activation='relu'),
+            layers.Dropout(name="drop1", rate=0.2),
+            
+            ### hidden layer 2
+            layers.Dense(name="h1", units=int(round((n_features+1)/4)), 
+                        activation='relu'),
+            layers.Dropout(name="drop2", rate=0.2),
+            
+            ### layer output
+            layers.Dense(name="output", units=1, activation='sigmoid')
+        ])
+
+        return model
+
 
     def verify(self, data_to_test):
         model = self.read_pickle()
