@@ -3,23 +3,28 @@ import json
 import os
 import pickle
 from hashlib import new
-from tensorflow.keras import models, layers, utils, backend as K
-import matplotlib.pyplot as plt
-import shap
 
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import shap
 from extractfeatures import ExtractFeatues
-from sklearn import linear_model
-from sklearn.metrics import (accuracy_score, mean_absolute_error,
-                             mean_squared_error, r2_score)
-from train import Train
-
-from sklearn import decomposition, datasets
-from sklearn import linear_model
+from scipy.stats import randint as sp_randInt
+from scipy.stats import uniform
+from scipy.stats import uniform as sp_randFloat
+from sklearn import datasets, decomposition, linear_model
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import (accuracy_score, make_scorer, mean_absolute_error,
+                             mean_squared_error, precision_score, r2_score)
+from sklearn.model_selection import (GridSearchCV, RandomizedSearchCV,
+                                     cross_val_score, train_test_split)
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import GridSearchCV, cross_val_score
 from sklearn.preprocessing import StandardScaler
+from tensorflow.keras import backend as K
+from tensorflow.keras import layers, models, utils
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from train import Train
 
 import os; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
@@ -43,42 +48,38 @@ class UrlModel:
         return 0
 
 
-    # define metrics
-    def Recall(self, y_true, y_pred):
-        true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        possible_positives = K.sum(K.round(K.clip(y_true, 0, 1)))
-        recall = true_positives / (possible_positives + K.epsilon())
-        return recall
-
-    def Precision(self, y_true, y_pred):
-        true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
-        predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
-        precision = true_positives / (predicted_positives + K.epsilon())
-        return precision
-
-    def F1(self, y_true, y_pred):
-        precision = self.Precision(y_true, y_pred)
-        recall = self.Recall(y_true, y_pred)
-        return 2*((precision*recall)/(precision+recall+K.epsilon()))
-
     def train(self):
         dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
         dataset = dataset.set_index('id')
         trainset = dataset.sample(frac=0.9, random_state=700)
+        X_train = trainset.iloc[: , :-1]
+        Y_train = trainset.iloc[: , -1]
+        test = dataset.drop(trainset.index)
+        X_test = test.iloc[: , :-1]
+        Y_test = test.iloc[: , -1]
+
         model = self.create_model(trainset.shape[1])
         # model.summary()
         model.compile(optimizer='adam', loss='binary_crossentropy', 
-              metrics=['accuracy',self.F1])
-        test = dataset.drop(trainset.index)
-        X_train = trainset.iloc[: , :-1]
-        Y_train = trainset.iloc[: , -1]
-        X_test = test.iloc[: , :-1]
-        Y_test = test.iloc[: , -1]
-        training = model.fit(x=X_train, y=Y_train, batch_size=32, epochs=100, shuffle=True, verbose=2, validation_split=0.3)
+              metrics=['accuracy'])
+
+        parameters = {'learning_rate': sp_randFloat(),
+                'subsample'    : sp_randFloat(),
+                'max_depth'    : sp_randInt(4, 10)
+                }
+        model.fit(X_train, Y_train, epochs = 150, batch_size = 30, verbose = 2)
+        # evaluate the keras model
+        accuracy = model.evaluate(X_train, Y_train, verbose=2)
+        print(accuracy)
+        
+        clf = RandomizedSearchCV(estimator = model, param_distributions = parameters, scoring=r2_score, cv = 2, n_iter = 10, n_jobs=-1)
+
+        training = clf.fit(X_train, Y_train, batch_size=32, epochs=100, shuffle=True, verbose=2, validation_split=0.3)
+        print(training.best_params_)
         print("finished")
         # plot
-        metrics = [k for k in training.history.keys() if ("loss" not in k) and ("val" not in k)]    
-        fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(15,3))
+        # metrics = [k for k in training.history.keys() if ("loss" not in k) and ("val" not in k)]    
+        # fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(15,3))
         exit()
         ## training    
         ax[0].set(title="Training")    
@@ -116,14 +117,18 @@ class UrlModel:
         model = models.Sequential(name="DeepNN", layers=[
             ### hidden layer 1
             layers.Dense(name="input", input_dim=n_features-1,
-                        units=int(round((n_features+1)/2)), 
+                        units=300, 
                         activation='relu'),
             layers.Dropout(name="drop1", rate=0.2),
             
             ### hidden layer 2
-            layers.Dense(name="h1", units=int(round((n_features+1)/4)), 
-                        activation='relu'),
+            layers.Dense(name="h1",units = 100, 
+                        activation='sigmoid'),
             layers.Dropout(name="drop2", rate=0.2),
+            
+            layers.Dense(name="h2", units=10, 
+                        activation='sigmoid'),
+            layers.Dropout(name="drop3", rate=0.2),
             
             ### layer output
             layers.Dense(name="output", units=1, activation='sigmoid')
