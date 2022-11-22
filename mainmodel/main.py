@@ -15,8 +15,8 @@ def main():
     # process.crawl(SuperSpider)
     # process.start()
     df = pd.read_json (r'C:\Users\BeLia\Documents\Magisterka\webscrape\postscrape\spiders\results.json')
-    x = UrlModel()
-    x.train()
+    urlmodel = UrlModel()
+    urlmodel.get_accuracy()
 
 if __name__ == '__main__':
     main()

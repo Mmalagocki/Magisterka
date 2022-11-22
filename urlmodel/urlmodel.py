@@ -14,17 +14,26 @@ from scipy.stats import uniform
 from scipy.stats import uniform as sp_randFloat
 from sklearn import datasets, decomposition, linear_model
 from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import (accuracy_score, make_scorer, mean_absolute_error,
+from sklearn.metrics import (accuracy_score, confusion_matrix, mean_absolute_error,
                              mean_squared_error, precision_score, r2_score)
 from sklearn.model_selection import (GridSearchCV, RandomizedSearchCV,
                                      cross_val_score, train_test_split)
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
-from tensorflow.keras import backend as K
-from tensorflow.keras import layers, models, utils
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from keras import backend as K
+from keras import layers, models, utils
+from keras.models import Sequential
+from keras.layers import Dense, InputLayer
+from keras.wrappers.scikit_learn import KerasRegressor
 from train import Train
+from keras.optimizers import SGD
+from keras.callbacks import EarlyStopping
+from keras.metrics import Accuracy, BinaryAccuracy
+from scipy.stats import reciprocal
+from pathlib import Path
+from keras.models import load_model
+import sklearn.metrics as sm
+
 
 import os; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
 
@@ -33,78 +42,94 @@ class UrlModel:
 
     def __init__(self):
         self.model_file_name = 'finalized_model.sav'
+    
+
+    def main(self, dataset=None):
+        self.normalize_dataset(dataset)
+        self.Bestparams()
 
 
-    def main(self):
-        model = self.read_pickle()
-
-    def read_pickle(self):
-        if os.path.isfile(self.model_file_name):
-            with open(self.model_file_name, "rb") as f:
-                try:
-                    return pickle.load(f)
-                except Exception: # so many things could go wrong, can't be more specific.
-                    pass 
-        return 0
+    def normalize_dataset(self, dataset=None):
+        if dataset is None:
+            dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
+        dataset = dataset.set_index('id')
+        dataset = dataset.replace(0, 0.5)
+        dataset = dataset.replace(-1, 0)
+        filepath = Path('../urlmodel/datasets/modified.csv')  
+        filepath.parent.mkdir(parents=True, exist_ok=True)  
+        dataset.to_csv(filepath)
 
 
-    def train(self):
-        dataset = pd.read_csv ('../urlmodel/datasets/basic.csv')
+    def load_mymodel(self):
+        loaded_model = load_model('model.h5')
+        return loaded_model
+
+
+    def get_accuracy(self):
+        dataset = pd.read_csv ('../urlmodel/datasets/modified.csv')
         dataset = dataset.set_index('id')
         trainset = dataset.sample(frac=0.9, random_state=700)
-        X_train = trainset.iloc[: , :-1]
-        Y_train = trainset.iloc[: , -1]
         test = dataset.drop(trainset.index)
         X_test = test.iloc[: , :-1]
         Y_test = test.iloc[: , -1]
+        model = self.load_mymodel()
+        y_pred = model.predict(X_test)
+        print("Mean absolute error =", round(sm.mean_absolute_error(Y_test, y_pred), 2)) 
+        print("Mean squared error =", round(sm.mean_squared_error(Y_test, y_pred), 2)) 
+        print("Median absolute error =", round(sm.median_absolute_error(Y_test, y_pred), 2)) 
+        print("Explain variance score =", round(sm.explained_variance_score(Y_test, y_pred), 2)) 
+        print("R2 score =", round(sm.r2_score(Y_test, y_pred), 2))
 
-        model = self.create_model(trainset.shape[1])
-        # model.summary()
-        model.compile(optimizer='adam', loss='binary_crossentropy', 
-              metrics=['accuracy'])
+    def Bestparams(self):
+        dataset = pd.read_csv ('../urlmodel/datasets/modified.csv')
+        dataset = dataset.set_index('id')
+        trainset = dataset.sample(frac=0.9, random_state=700)
+        X_train_full = trainset.iloc[: , :-1]
+        Y_train_full = trainset.iloc[: , -1]
+        X_valid, X_train = X_train_full[:1000], X_train_full[1000:]
+        Y_valid, Y_train = Y_train_full[:1000], Y_train_full[1000:]
 
-        parameters = {'learning_rate': sp_randFloat(),
-                'subsample'    : sp_randFloat(),
-                'max_depth'    : sp_randInt(4, 10)
-                }
-        model.fit(X_train, Y_train, epochs = 150, batch_size = 30, verbose = 2)
-        # evaluate the keras model
-        accuracy = model.evaluate(X_train, Y_train, verbose=2)
-        print(accuracy)
-        
-        clf = RandomizedSearchCV(estimator = model, param_distributions = parameters, scoring=r2_score, cv = 2, n_iter = 10, n_jobs=-1)
+        params_distribs = {
+            "n_hidden": [0, 1, 2, 3, 4, 5, 6],
+            "n_neurons": np.arange(1,100),
+            "learning_rate": reciprocal(3e-4, 3e-2),
+        }
+        keras_model = KerasRegressor(self.adjusting_model)
+        keras_model.fit(X_train_full, Y_train_full, epochs=100)
+        rnd_search_cv = RandomizedSearchCV(keras_model, params_distribs, n_iter=10, cv=3)
+        rnd_search_cv.fit(X_train, Y_train, epochs=100,
+                        validation_data = (X_valid, Y_valid)
+        )
 
-        training = clf.fit(X_train, Y_train, batch_size=32, epochs=100, shuffle=True, verbose=2, validation_split=0.3)
-        print(training.best_params_)
-        print("finished")
-        # plot
-        # metrics = [k for k in training.history.keys() if ("loss" not in k) and ("val" not in k)]    
-        # fig, ax = plt.subplots(nrows=1, ncols=2, sharey=True, figsize=(15,3))
-        exit()
-        ## training    
-        ax[0].set(title="Training")    
-        ax11 = ax[0].twinx()    
-        ax[0].plot(training.history['loss'], color='black')    
-        ax[0].set_xlabel('Epochs')    
-        ax[0].set_ylabel('Loss', color='black')    
-        for metric in metrics:        
-            ax11.plot(training.history[metric], label=metric)   
-            ax11.set_ylabel("Score", color='steelblue')    
-        ax11.legend()
-                
-        ## validation    
-        ax[1].set(title="Validation")    
-        ax22 = ax[1].twinx()    
-        ax[1].plot(training.history['val_loss'], color='black')    
-        ax[1].set_xlabel('Epochs')    
-        ax[1].set_ylabel('Loss', color='black')    
-        for metric in metrics:          
-            ax22.plot(training.history['val_'+metric], label=metric)    
-            ax22.set_ylabel("Score", color="steelblue")    
-        plt.show()
+        print(rnd_search_cv.best_params_)
+        print(rnd_search_cv.best_score_)
 
-        filename = 'finalized_model.sav'
-        # pickle.dump(model, open(filename, 'wb'))
+
+    def train(self, n_neurons=None, learning_rate=None, optimizer=None, input_shape=30):
+        dataset = pd.read_csv ('../urlmodel/datasets/modified.csv')
+        dataset = dataset.set_index('id')
+        trainset = dataset.sample(frac=0.9, random_state=700)
+        X_train_full = trainset.iloc[: , :-1]
+        Y_train_full = trainset.iloc[: , -1]
+
+        model = self.create_model()
+        model.fit(X_train_full, Y_train_full, epochs=100)
+        model.save('model.h5')
+
+    def create_model(self, n_neurons=55, learning_rate=0.02902325189497062, optimizer=None, input_shape=30):
+        model = Sequential()
+        model.add(InputLayer(input_shape = 30))
+        model.add(Dense(n_neurons, activation = "relu"))
+        model.add(Dense(n_neurons, activation = "relu"))
+        model.add(Dense(n_neurons, activation = "relu"))
+        model.add(Dense(n_neurons, activation = "relu"))
+        model.add(Dense(n_neurons, activation="sigmoid"))
+        model.add(Dense(1))
+        if optimizer is None:
+            optimizer = SGD(learning_rate = learning_rate)
+        model.compile(loss="mse", optimizer = optimizer, metrics=BinaryAccuracy())
+
+        return model
 
     def preprocess_data(self,df):
         df.drop_duplicates(subset=['examined_page'], inplace=True)
@@ -113,33 +138,21 @@ class UrlModel:
 
         return df
 
-    def create_model(self, n_features):
-        model = models.Sequential(name="DeepNN", layers=[
-            ### hidden layer 1
-            layers.Dense(name="input", input_dim=n_features-1,
-                        units=300, 
-                        activation='relu'),
-            layers.Dropout(name="drop1", rate=0.2),
-            
-            ### hidden layer 2
-            layers.Dense(name="h1",units = 100, 
-                        activation='sigmoid'),
-            layers.Dropout(name="drop2", rate=0.2),
-            
-            layers.Dense(name="h2", units=10, 
-                        activation='sigmoid'),
-            layers.Dropout(name="drop3", rate=0.2),
-            
-            ### layer output
-            layers.Dense(name="output", units=1, activation='sigmoid')
-        ])
-
+    def adjusting_model(self, n_hidden = 4, n_neurons = 55, learning_rate = 0.02902325189497062, input_shape = 30):
+        model = Sequential()
+        model.add(InputLayer(input_shape = input_shape))
+        
+        for layer in range(n_hidden):
+            model.add(Dense(n_neurons, activation = "relu"))
+        model.add(Dense(n_neurons, activation="sigmoid"))
+        model.add(Dense(1))
+        optimizer = SGD(learning_rate = learning_rate)
+        model.compile(loss="mse", optimizer = optimizer, metrics=BinaryAccuracy())
         return model
 
 
     def verify(self, data_to_test):
-        model = self.read_pickle()
-        if model == 0:
+        if self.model == 0:
             self.train()
         data_to_test = self.preprocess_data(data_to_test)
 
@@ -152,5 +165,5 @@ class UrlModel:
             extracted_features.append(extracted.checkFeatures(row))
             if i > 9:
                 break
-        results = model.predict(extracted_features)
+        results = self.model.predict(extracted_features)
         print(results)
