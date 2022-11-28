@@ -9,10 +9,6 @@ class SuperSpider(CrawlSpider):
     start_urls = ['http://zthplanet.com/']
     base_url = 'http://zthplanet.com'
 
-    # allowed_domains = ['https://webscraper.io/test-sites/e-commerce/allinone']
-    # start_urls = ['https://webscraper.io/test-sites/e-commerce/allinone']
-    # base_url = 'https://webscraper.io/test-sites/e-commerce/allinone'
-
     rules = [Rule(LinkExtractor(allow='/'),
                   callback='parse', follow=True)]
 

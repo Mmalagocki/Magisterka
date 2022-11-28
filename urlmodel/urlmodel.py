@@ -1,48 +1,31 @@
-import csv
-import json
 import os
-import pickle
-from hashlib import new
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import shap
+import sklearn.metrics as sm
+import os; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+
 from extractfeatures import ExtractFeatues
-from scipy.stats import randint as sp_randInt
-from scipy.stats import uniform
-from scipy.stats import uniform as sp_randFloat
-from sklearn import datasets, decomposition, linear_model
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.metrics import (accuracy_score, confusion_matrix, mean_absolute_error,
-                             mean_squared_error, precision_score, r2_score)
-from sklearn.model_selection import (GridSearchCV, RandomizedSearchCV,
-                                     cross_val_score, train_test_split)
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from keras import backend as K
-from keras import layers, models, utils
+from sklearn.model_selection import RandomizedSearchCV
 from keras.models import Sequential
 from keras.layers import Dense, InputLayer
 from keras.wrappers.scikit_learn import KerasRegressor
-from train import Train
 from keras.optimizers import SGD
-from keras.callbacks import EarlyStopping
-from keras.metrics import Accuracy, BinaryAccuracy
+from keras.metrics import BinaryAccuracy
 from scipy.stats import reciprocal
 from pathlib import Path
 from keras.models import load_model
-import sklearn.metrics as sm
 
 
-import os; os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
+
+
 
 class UrlModel:
 
 
     def __init__(self):
         self.model_file_name = 'finalized_model.sav'
-    
+
 
     def main(self, dataset=None):
         self.normalize_dataset(dataset)
