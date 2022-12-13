@@ -329,17 +329,6 @@ class ExtractFeatues:
 
 
     def externalSourceContent(self, i, url):
-        # ctx = ssl.create_default_context()
-        # ctx.check_hostname = False
-        # ctx.verify_mode = ssl.CERT_NONE
-        # html_page = urllib2.urlopen(url, context=ctx)
-
-        # soup = BeautifulSoup(html_page, features="html5lib")
-        # images = []
-        # for img in soup.findAll('img',  limit=None, recursive=True):
-        #     images.append(img.get('src'))
-
-
         images = self.getContentFromPage('img', 'src', url)
         base_url = self.getBaseUrl(url)
         number_of_links = len(images)
@@ -379,10 +368,10 @@ class ExtractFeatues:
         external_links = 0
 
         if links:
-            for img in links:
-                if str(img) == False:
+            for link in links:
+                if str(link) == False:
                     continue
-                base_img_url = self.getBaseUrl(img)
+                base_img_url = self.getBaseUrl(link)
                 if base_url != base_img_url:
                     external_links += 1
                 else:

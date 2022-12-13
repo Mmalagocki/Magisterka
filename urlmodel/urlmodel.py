@@ -88,7 +88,7 @@ class UrlModel:
         print(rnd_search_cv.best_score_)
 
 
-    def train(self, n_neurons=None, learning_rate=None, optimizer=None, input_shape=30):
+    def train(self):
         dataset = pd.read_csv ('../urlmodel/datasets/modified.csv')
         dataset = dataset.set_index('id')
         trainset = dataset.sample(frac=0.9, random_state=700)
@@ -135,8 +135,7 @@ class UrlModel:
 
 
     def verify(self, data_to_test):
-        if self.model == 0:
-            self.train()
+        model = self.load_mymodel()
         data_to_test = self.preprocess_data(data_to_test)
 
         extracted_features = []
@@ -148,5 +147,5 @@ class UrlModel:
             extracted_features.append(extracted.checkFeatures(row))
             if i > 9:
                 break
-        results = self.model.predict(extracted_features)
+        results = model.predict(extracted_features)
         print(results)

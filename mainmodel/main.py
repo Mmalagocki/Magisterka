@@ -22,7 +22,7 @@ def main():
 
     df = pd.read_json (r'C:\Users\BeLia\Documents\Magisterka\webscrape\postscrape\spiders\results.json')
     urlmodel = UrlModel()
-    urlmodel.get_accuracy()
+    urlmodel.verify()
     
 
 if __name__ == '__main__':
